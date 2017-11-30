@@ -1,0 +1,12 @@
+<div>
+  
+  <h2>Add new article</h2>
+  <input type="text" [(ngModel)]="article.title" placeholder="Title">
+  <input type="text" [(ngModel)]="article.author" placeholder="author">
+  <input type="text" [(ngModel)]="article.body" placeholder="body">
+  <input type="date" [(ngModel)]="article.date" placeholder="date">
+  <input type="text" [(ngModel)]="article.header" placeholder="header">
+  <input type="text" [(ngModel)]="article.image" placeholder="image URL">
+  
+  <button (click)="addArticle()">Add</button>
+</div>

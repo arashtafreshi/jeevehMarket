@@ -5,9 +5,10 @@
         <app-category-item></app-category-item>
       </div>
       <div class="col-md-10" style="background-color: lightgray;">
+          <app-add-new-article></app-add-new-article>
         <div class="row" >
-          <div class="col-md-3" *ngFor="let article of [1,2,3,4,5,6,7,8,9]">
-            <app-article></app-article>
+          <div class="col-md-3" *ngFor="let article of articles">
+            <app-article [article]="article"></app-article>
           </div>
         </div>
       </div>
