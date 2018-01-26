@@ -7,12 +7,13 @@ import { HomeMasterComponent } from '../home/home-master/home-master.component';
 import { AuthGuardService } from '../login/auth-guard.service';
 import { LoginComponent } from '../login/login.component';
 import { AuthService } from '../login/auth.service';
+import {PageNotFoundComponent} from '../pages/page-not-found/page-not-found.component';
 
 import {HomepageRoutingModule} from '../pages/homepage-routing/homepage-routing.module'
 import { HomepageComponent } from '../pages/homepage/homepage.component';
 
 const appRoutes: Routes = [
-  { path: 'admin', component: LoginComponent },
+  { path: 'login', component: LoginComponent },
   { path: 'homepage', component: HomepageComponent },
   {
     path: '',
@@ -21,7 +22,8 @@ const appRoutes: Routes = [
     children: [
       { path: 'home', component: CategoryItemComponent }
     ]
-  }  
+  },
+  { path: '**', component: PageNotFoundComponent },
 ];
 
 @NgModule({

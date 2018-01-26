@@ -1,0 +1,22 @@
+<p>
+  my-cart works!
+</p>
+<div [ngClass]="['container']">
+    <ul>
+      <li>
+        <span [ngClass]="['fa fa-link']"></span>
+        <a routerLink="./information" routerLinkActive="active"> Information</a>
+      </li>
+      <li>
+        <span [ngClass]="['fa fa-link']"></span>
+        <a routerLink="./payment" routerLinkActive="active"> Payment</a>
+      </li>
+      <li>
+        <span [ngClass]="['fa fa-link']"></span>
+        <a routerLink="./sammary" routerLinkActive="active"> Sammary</a>
+      </li>
+    </ul>
+  </div>
+  
+  
+  <router-outlet></router-outlet>

@@ -1,7 +1,22 @@
 <p>
   homepage works!
 </p>
-<a routerLink="./link1" routerLinkActive="active">Link 1</a>
-<a routerLink="./link2" routerLinkActive="active">Link 2</a>
-<a routerLink="./link3" routerLinkActive="active">Link 3</a>
+<div [ngClass]="['container']">
+  <ul>
+    <li>
+      <span [ngClass]="['fa fa-link']"></span>
+      <a routerLink="./link1" routerLinkActive="active"> Link 1</a>
+    </li>
+    <li>
+      <span [ngClass]="['fa fa-link']"></span>
+      <a routerLink="./link2" routerLinkActive="active"> Link 2</a>
+    </li>
+    <li>
+      <span [ngClass]="['fa fa-link']"></span>
+      <a routerLink="./link3" routerLinkActive="active"> Link 3</a>
+    </li>
+  </ul>
+</div>
+
+
 <router-outlet></router-outlet>

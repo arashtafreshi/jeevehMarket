@@ -16,6 +16,8 @@ import {AuthGuardService} from './login/auth-guard.service';
 import {AuthService} from './login/auth.service';
 
 import {HomepageModule} from './pages/homepage-routing/homepage.module';
+import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { OrderModule } from './pages/order/order/order.module';
 
 
 @NgModule({
@@ -25,13 +27,15 @@ import {HomepageModule} from './pages/homepage-routing/homepage.module';
     CategoryItemComponent,
     ArticleComponent,
     AddNewArticleComponent,
-    LoginComponent
+    LoginComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
     HomepageModule,
+    OrderModule,
     AppRoutingModule    
   ],
   providers: [AuthService,AuthGuardService],

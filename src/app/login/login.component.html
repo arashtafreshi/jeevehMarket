@@ -1,6 +1,16 @@
-<h2>LOGIN</h2>
-<p>{{message}}</p>
-<p>
-  <button (click)="login()"  *ngIf="!authService.isLoggedIn">Login</button>
-  <button (click)="logout()" *ngIf="authService.isLoggedIn">Logout</button>
-</p>`
+<div>
+  <div [ngClass]="['container']">
+    <div class="jumbotron">
+      <h2>LOGIN :</h2>
+      <p>{{message}}</p>
+      <p>
+        <input type="text" [ngClass]="['form-control']" placeholder="Email..." *ngIf="!authService.isLoggedIn"/>
+        <input type="password" [ngClass]="['form-control']" placeholder="Password..." *ngIf="!authService.isLoggedIn"/>
+        <button [ngClass]="['btn', 'btn-primary']" (click)="login()" *ngIf="!authService.isLoggedIn" >
+          <span [ngClass]="['fa fa-sign-in']"></span> Login</button>
+        <button [ngClass]="['btn', 'btn-danger']" (click)="logout()" *ngIf="authService.isLoggedIn">
+          <span [ngClass]="['fa fa-sign-out']"></span> Logout</button>
+      </p>
+    </div>
+  </div>
+</div>

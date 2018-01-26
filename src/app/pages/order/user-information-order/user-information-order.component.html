@@ -1,0 +1,45 @@
+<p>
+  user-information-order works!
+</p>
+<div>
+  <div [ngClass]="['container']">
+    <h2>Customer Information:</h2>
+    <div [ngClass]="['form-group']">
+      <label for="fName">First Name</label>
+      <input id="fName" type="text" [ngClass]="['form-control']">
+    </div>
+    <div [ngClass]="['form-group']">
+      <label for="lName">Last Name</label>
+      <input id="lName" type="text" [ngClass]="['form-control']">
+    </div>
+    <div [ngClass]="['form-group']">
+      <label for="phone">Phone</label>
+      <input id="phone" type="tel" [ngClass]="['form-control']">
+    </div>
+    <h3>Adress:</h3>
+    <hr>
+    <div [ngClass]="['row']">
+      <div [ngClass]="['col-md-6']">
+        <div [ngClass]="['form-group']">
+          <label for="Address1">Address 1</label>
+          <input id="Address1" type="text" [ngClass]="['form-control']">
+        </div>
+        <div [ngClass]="['form-group']">
+          <label for="Address2">Address 2</label>
+          <input id="Address2" type="text" [ngClass]="['form-control']">
+        </div>
+      </div>
+      <div [ngClass]="['col-md-6']">
+          <div [ngClass]="['form-group']">
+              <label for="zipcode">Zip Code</label>
+              <input id="zipcode" type="text" [ngClass]="['form-control']">
+            </div>
+            <div [ngClass]="['form-group']">
+              <label for="State">State</label>
+              <input id="State" type="text" [ngClass]="['form-control']">
+            </div>
+      </div>
+    </div>
+    <a [ngClass]="['btn btn-primary']" routerLink="../payment" routerLinkActive="active">Next <span [ngClass]="['fa fa-arrow-right']"></span> Payment</a>
+  </div>
+</div>
