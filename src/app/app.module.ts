@@ -18,6 +18,7 @@ import {AuthService} from './login/auth.service';
 import {HomepageModule} from './pages/homepage-routing/homepage.module';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { OrderModule } from './pages/order/order/order.module';
+import { BooksModule } from './book/books.module';
 
 
 @NgModule({
@@ -28,7 +29,7 @@ import { OrderModule } from './pages/order/order/order.module';
     ArticleComponent,
     AddNewArticleComponent,
     LoginComponent,
-    PageNotFoundComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -36,6 +37,7 @@ import { OrderModule } from './pages/order/order/order.module';
     FormsModule,
     HomepageModule,
     OrderModule,
+    BooksModule,
     AppRoutingModule    
   ],
   providers: [AuthService,AuthGuardService],

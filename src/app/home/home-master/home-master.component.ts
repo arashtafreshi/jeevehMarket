@@ -2,6 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import {ArticleServiceService} from '../../edit/article/article-service.service';
 import { ArticleModel } from '../../article/article-model';
 
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/map';
+import { catchError, map, tap } from 'rxjs/operators';
+
 @Component({
   selector: 'app-home-master',
   templateUrl: './home-master.component.html',
@@ -13,7 +18,7 @@ export class HomeMasterComponent implements OnInit {
   constructor(private articleService:ArticleServiceService) { }
 
   ngOnInit() {
-    this .articles = this.articleService.getArticles();
+    this.articleService.getArticles().subscribe((data:ArticleModel[])=>this.articles=data);
   }
 
 }

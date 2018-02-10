@@ -16,6 +16,7 @@ export class AddNewArticleComponent implements OnInit {
     console.log(this.article.toString());
     this.articleService.addArticle(this.article);
     this.article = new ArticleModel();
+    this.article.image = "https://picsum.photos/300/300";
   }
 
   constructor(private articleService:ArticleServiceService) { }

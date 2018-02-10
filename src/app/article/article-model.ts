@@ -3,7 +3,7 @@ export class ArticleModel {
     body: string;
     image: string;
     author: string;
-    date: string;
+    date: Date;
 
     constructor() {
         this.header = null;

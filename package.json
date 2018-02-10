@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --proxy-config proxy.config.json",
+    "start": "ng build && node ./bin/www",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -21,13 +21,19 @@
     "@angular/platform-browser": "^4.2.4",
     "@angular/platform-browser-dynamic": "^4.2.4",
     "@angular/router": "^4.2.4",
-    "core-js": "^2.4.1",
-    "rxjs": "^5.4.2",
-    "zone.js": "^0.8.14",
+    "bluebird": "^3.5.1",
+    "body-parser": "^1.18.2",
     "bootstrap": "^3.3.7",
+    "core-js": "^2.4.1",
+    "express": "^4.16.2",
     "font-awesome": "^4.7.0",
     "jquery": "^3.3.0",
-    "popper.js": "^1.12.9"
+    "mongoose": "^5.0.4",
+    "morgan": "^1.9.0",
+    "popper.js": "^1.12.9",
+    "rxjs": "^5.4.2",
+    "serve-favicon": "^2.4.5",
+    "zone.js": "^0.8.14"
   },
   "devDependencies": {
     "@angular/cli": "1.3.2",
