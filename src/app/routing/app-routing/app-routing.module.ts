@@ -2,15 +2,15 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 
-import { CategoryItemComponent } from '../home/category-item/category-item.component';
-import { HomeMasterComponent } from '../home/home-master/home-master.component';
-import { AuthGuardService } from '../login/auth-guard.service';
-import { LoginComponent } from '../login/login.component';
-import { AuthService } from '../login/auth.service';
-import {PageNotFoundComponent} from '../pages/page-not-found/page-not-found.component';
+import { CategoryItemComponent } from '../../components/category-item/category-item.component';
+import { HomeMasterComponent } from '../../components/home-master/home-master.component';
+import { AuthGuardService } from '../../services/auth-guard.service';
+import { LoginComponent } from '../../components/login/login.component';
+import { AuthService } from '../../services/auth.service';
+import {PageNotFoundComponent} from '../../components/page-not-found/page-not-found.component';
 
-import {HomepageRoutingModule} from '../pages/homepage-routing/homepage-routing.module'
-import { HomepageComponent } from '../pages/homepage/homepage.component';
+import {HomepageRoutingModule} from '../homepage-routing/homepage-routing.module'
+import { HomepageComponent } from '../../components/homepage/homepage.component';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },

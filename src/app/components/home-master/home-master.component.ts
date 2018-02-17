@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {ArticleServiceService} from '../../edit/article/article-service.service';
-import { ArticleModel } from '../../article/article-model';
+import {ArticleServiceService} from '../../services/article-service.service';
+import { ArticleModel } from '../article/article-model';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';

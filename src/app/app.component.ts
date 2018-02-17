@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { LoginComponent } from './login/login.component';
-import { AuthService } from './login/auth.service';
-import { AuthGuardService } from './login/auth-guard.service';
+import { LoginComponent } from './components/login/login.component';
+import { AuthService } from './services/auth.service';
+import { AuthGuardService } from './services/auth-guard.service';
 
 @Component({
   selector: 'app-root',
