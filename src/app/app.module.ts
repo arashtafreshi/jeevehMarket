@@ -19,6 +19,8 @@ import {HomepageModule} from './routing/homepage-routing/homepage.module';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { OrderModule } from './components/order/order/order.module';
 import { BooksModule } from './components/book/books.module';
+import { StripeComponent } from './components/stripe/stripe.component';
+import { StripeDirective } from './directives/stripe.directive';
 
 
 @NgModule({
@@ -29,7 +31,9 @@ import { BooksModule } from './components/book/books.module';
     ArticleComponent,
     AddNewArticleComponent,
     LoginComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    StripeComponent,
+    StripeDirective
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-const items = ['Login', 'Tables', 'Status', 'Summary', 'Accounts', 'Users'];
+const items = ['Admin', 'Tables', 'Status', 'Summary', 'Accounts', 'Users'];
 
 @Component({
   selector: 'app-category-item',

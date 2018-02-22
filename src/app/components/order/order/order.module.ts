@@ -12,6 +12,8 @@ import { UserInformationOrderComponent } from '../user-information-order/user-in
 
 import { OrderRoutingModule } from './order-routing.module';
 
+import {SafePipe} from '../../../classes/safe-pipe';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -22,7 +24,8 @@ import { OrderRoutingModule } from './order-routing.module';
     MyCartComponent,
     UserPaymentOrderComponent,
     UserInformationOrderComponent,
-    UserSammaryOrderComponent
+    UserSammaryOrderComponent,
+    SafePipe
   ],
   providers: [AuthService, AuthGuardService]
 })
