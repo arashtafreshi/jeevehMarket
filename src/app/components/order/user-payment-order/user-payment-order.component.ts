@@ -5,7 +5,7 @@ import {
 } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
-import {DomSanitizer, SafeHtml, SafeStyle, SafeScript, SafeUrl, SafeResourceUrl} from '@angular/platform-browser';
+import { DomSanitizer, SafeHtml, SafeStyle, SafeScript, SafeUrl, SafeResourceUrl } from '@angular/platform-browser';
 import { Url } from 'url';
 
 
@@ -17,10 +17,10 @@ import { Url } from 'url';
 
 export class UserPaymentOrderComponent implements OnInit {
   html: string;
-  htmlLink:string;
-  htmlLink2:any;
+  htmlLink: string;
+  htmlLink2: any;
 
-  checkout:any=`<form action="your-server-side-code" method="POST">
+  checkout: any = `<form action="your-server-side-code" method="POST">
   <script
     src="https://checkout.stripe.com/checkout.js" class="stripe-button"
     data-key="pk_test_6pRNASCoBOKtIshFeQd4XMUh"
@@ -34,21 +34,20 @@ export class UserPaymentOrderComponent implements OnInit {
 </form>
   
   `
-  
-  
+
+
 
   constructor(private sanitizer: DomSanitizer) { }
 
-  
+
   ngOnInit() {
     this.html = `<script type="text/javascript" src="https://js.stripe.com/v3/"></script><script>var elements = stripe.elements();</script>`;
-    this.htmlLink  = "https://js.stripe.com/v3/";
-    this.htmlLink2  = this.sanitizer.bypassSecurityTrustResourceUrl("https://js.stripe.com/v3/");
+    this.htmlLink = "https://js.stripe.com/v3/";
+    this.htmlLink2 = this.sanitizer.bypassSecurityTrustResourceUrl("https://js.stripe.com/v3/");
     this.checkout = this.sanitizer.bypassSecurityTrustHtml(this.checkout);
-
     const fragment = document.createRange().createContextualFragment(this.checkout);
-    document.body.appendChild(fragment);
-
+    document.getElementById("stripe-payment").innerHTML = "";
+    document.getElementById("stripe-payment").appendChild(fragment);
   }
 
 

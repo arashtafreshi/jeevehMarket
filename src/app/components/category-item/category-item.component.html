@@ -1,8 +1,12 @@
 <div>
   <ul>
+    <li  class="cat-item">
+      <a routerLink="/admin" routerLinkActive="active"> <div class="cat-item-detail">Admin</div></a>
+    </li>
     <li class="cat-item" *ngFor="let item of items">
       <a href="#"><div class="cat-item-detail">{{item}}</div></a>
     </li>
   </ul>
 </div>
 
+<router-outlet></router-outlet>

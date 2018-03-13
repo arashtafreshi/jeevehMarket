@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng build && node ./bin/www",
+    "start": "node ./bin/www & ng serve --proxy-config proxy.config.json --port 4200",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -28,9 +28,11 @@
     "express": "^4.16.2",
     "font-awesome": "^4.7.0",
     "jquery": "^3.3.0",
-    "mongoose": "^5.0.4",
+    "jsonwebtoken": "^8.1.1",
+    "mongoose": "^5.0.9",
     "morgan": "^1.9.0",
     "popper.js": "^1.12.9",
+    "primeng": "^5.2.3",
     "rxjs": "^5.4.2",
     "serve-favicon": "^2.4.5",
     "zone.js": "^0.8.14"
@@ -41,8 +43,12 @@
     "@angular/language-service": "^4.2.4",
     "@types/jasmine": "~2.5.53",
     "@types/jasminewd2": "~2.0.2",
+    "@types/mongodb": "^3.0.7",
+    "@types/mongoose": "^5.0.6",
     "@types/node": "~6.0.60",
+    "bootstrap": "^3.3.7",
     "codelyzer": "~3.1.1",
+    "font-awesome": "^4.7.0",
     "jasmine-core": "~2.6.2",
     "jasmine-spec-reporter": "~4.1.0",
     "karma": "~1.7.0",
@@ -51,12 +57,10 @@
     "karma-coverage-istanbul-reporter": "^1.2.1",
     "karma-jasmine": "~1.1.0",
     "karma-jasmine-html-reporter": "^0.2.2",
+    "popper.js": "^1.12.9",
     "protractor": "~5.1.2",
     "ts-node": "~3.2.0",
     "tslint": "~5.3.2",
-    "typescript": "^2.5.0",
-    "bootstrap": "^3.3.7",
-    "font-awesome": "^4.7.0",
-    "popper.js": "^1.12.9"
+    "typescript": "^2.5.0"
   }
 }
