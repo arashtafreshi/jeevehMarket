@@ -1,12 +1,41 @@
-<div>
-  
-  <h2>Add new article</h2>
-  <input type="text" [(ngModel)]="article.title" placeholder="Title">
-  <input type="text" [(ngModel)]="article.author" placeholder="author">
-  <input type="text" [(ngModel)]="article.body" placeholder="body">
-  <input type="date" [(ngModel)]="article.date" placeholder="date">
-  <input type="text" [(ngModel)]="article.header" placeholder="header">
-  <input type="text" [(ngModel)]="article.image" placeholder="image URL">
-  
-  <button (click)="addArticle()">Add</button>
+
+
+
+
+<h3 class="first">Article</h3>
+<div class="ui-g">
+  <div [ngClass]="['ui-g-12']">
+    <span class="ui-float-label">
+      <input id="title-input" type="text" [(ngModel)]="article.title" size="40"  pInputText>
+      <label for="title-input">Title</label>
+    </span>
+  </div>
+  <div [ngClass]="['ui-g-12']">
+    <span class="ui-float-label">
+      <input id="author-input" type="text" [(ngModel)]="article.author" size="40" pInputText>
+      <label for="author-input">Author</label>
+    </span>
+  </div>
+  <div [ngClass]="['ui-g-12']">
+    <span class="ui-float-label">
+      <input id="body-input" type="text" [(ngModel)]="article.body" size="40" pInputText>
+      <label for="body-input">Body</label>
+    </span>
+  </div>
+  <div [ngClass]="['ui-g-12']">
+    <span class="ui-float-label">
+      <p-calendar id="date-input" [(ngModel)]="article.date"></p-calendar>
+      <label for="date-input">Date</label>
+    </span>
+  </div>
+  <div [ngClass]="['ui-g-12']">
+    <span class="ui-float-label">
+      <input id="header-input" type="text" [(ngModel)]="article.header" size="40" pInputText>
+      <label for="header-input">Header</label>
+    </span>
+  </div>
+  <div [ngClass]="['ui-g-12']">
+      <p-fileUpload name="myfile[]" url="./upload.php" accept="image/*" maxFileSize="5*1000*1000" showUploadButton=true></p-fileUpload>
+  </div>
+  <p-button label="Add" (click)="addArticle()"></p-button>
 </div>

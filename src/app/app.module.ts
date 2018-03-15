@@ -26,9 +26,17 @@ import { StripeComponent } from './components/stripe/stripe.component';
 import { StripeDirective } from './directives/stripe.directive';
 import { AdminMainComponent } from './components/admin-main/admin-main.component';
 
+// PrimeNG
 import {ContextMenuModule} from 'primeng/contextmenu';
 import {DataViewModule} from 'primeng/dataview';
 import {TableModule} from 'primeng/table';
+import {CalendarModule} from 'primeng/calendar';
+import {ButtonModule} from 'primeng/button';
+import {FileUploadModule} from 'primeng/fileupload';
+
+import { AdminArticlesComponent } from './components/admin-articles/admin-articles.component';
+import { AdminUsersComponent } from './components/admin-users/admin-users.component';
+import { AdminSettingsComponent } from './components/admin-settings/admin-settings.component';
 //import {MenuItem} from 'primeng/api';
 
 
@@ -46,7 +54,10 @@ import {TableModule} from 'primeng/table';
     Link1Component,
     Link2Component,
     Link3Component,
-    AdminMainComponent
+    AdminMainComponent,
+    AdminArticlesComponent,
+    AdminUsersComponent,
+    AdminSettingsComponent
   ],
   imports: [
     BrowserModule,
@@ -57,6 +68,9 @@ import {TableModule} from 'primeng/table';
     ContextMenuModule,
     DataViewModule,
     TableModule,
+    CalendarModule,
+    ButtonModule,
+    FileUploadModule,
     AppRoutingModule
   ],
   providers: [AuthService,AuthGuardService],

@@ -17,6 +17,9 @@ import { Link3Component } from '../../components/link3/link3.component';
 
 // Admin
 import { AdminMainComponent } from '../../components/admin-main/admin-main.component';
+import { AdminArticlesComponent } from '../../components/admin-articles/admin-articles.component';
+import { AdminUsersComponent } from '../../components/admin-users/admin-users.component';
+import { AdminSettingsComponent } from '../../components/admin-settings/admin-settings.component';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -43,7 +46,20 @@ const appRoutes: Routes = [
       {
         path: '',
         canActivateChild: [AuthGuardService],
-        children: []
+        children: [
+          { 
+            path: 'Articles',
+            component: AdminArticlesComponent 
+          },
+          { 
+            path: 'Users',
+            component: AdminUsersComponent 
+          },
+          { 
+            path: 'Settings',
+            component: AdminSettingsComponent 
+          }
+        ]
       }
     ]
   },

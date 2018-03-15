@@ -1,0 +1,62 @@
+<p>
+  admin-users works!
+</p>
+
+<div>
+  <div class="ui-g">
+    <div [ngClass]="['ui-g-12']">
+      <span class="ui-float-label">
+        <input id="firstName-input" type="text" [(ngModel)]="user.firstName" size="40" pInputText>
+        <label for="firstName-input">First Name</label>
+      </span>
+    </div>
+    <div [ngClass]="['ui-g-12']">
+      <span class="ui-float-label">
+        <input id="lastName-input" type="text" [(ngModel)]="user.lastName" size="40" pInputText>
+        <label for="lastName-input">Last Name</label>
+      </span>
+    </div>
+    <div [ngClass]="['ui-g-12']">
+      <span class="ui-float-label">
+        <input id="email-input" type="text" [(ngModel)]="user.email" size="40" pInputText>
+        <label for="email-input">Email</label>
+      </span>
+    </div>
+    <p-button (click)="addUser()" label="Add User"></p-button>
+  </div>
+
+  <p-table [value]="allUsers">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>ExternalId</th>
+        <th>Address</th>
+        <th>Created date</th>
+        <th>Email</th>
+        <th>Gender</th>
+        <th>Delete</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-usr>
+      <tr>
+        <td>{{usr.firstName}}</td>
+        <td>{{usr.lastName}}</td>
+        <td>{{usr.externalId}}</td>
+        <td>
+          <div>{{usr.address.address_1}}</div>
+          <div>{{usr.address.address_2}}</div>
+          <div>{{usr.address.city}}, {{usr.address.state}} {{usr.address.zipcode}}</div>
+        </td>
+        <td>{{usr.created_date}}</td>
+        <td>{{usr.email}}</td>
+        <td>{{usr.gender}}</td>
+        <td>
+          <button [ngClass]="['btn btn-danger']" (click)="deleteUser(usr)">
+            <i [ngClass]="['fa fa-trash']"></i>
+          </button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
