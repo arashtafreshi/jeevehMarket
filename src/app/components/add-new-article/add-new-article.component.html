@@ -35,7 +35,33 @@
     </span>
   </div>
   <div [ngClass]="['ui-g-12']">
-      <p-fileUpload name="myfile[]" url="./upload.php" accept="image/*" maxFileSize="5*1000*1000" showUploadButton=true></p-fileUpload>
+    <span class="ui-float-label">
+      <input id="image-input" type="text" [(ngModel)]="article.image" size="40" pInputText>
+      <label for="image-input">Image</label>
+    </span>
+  </div>
+  <div [ngClass]="['ui-g-12']">
+      <p-fileUpload id="file" name="file" url="/upload"  accept="image/*" maxFileSize="1000000" showUploadButton=true (uploadHandler)="myUploader($event)" (onUpload)="uploaded($event)"></p-fileUpload>
+  </div>
+  <div [ngClass]="['ui-g-12']">
+    <p-editor [(ngModel)]="article.content" [style]="{'height':'520px'}"></p-editor>
   </div>
   <p-button label="Add" (click)="addArticle()"></p-button>
 </div>
+
+
+<div class="form-group">
+  <label for="file">Choose File</label>
+  <input type="file"
+         id="file"
+         (change)="handleFileInput($event.target.files)">
+</div>
+
+
+
+<form (ngSubmit)="myUploader(event)" method="post" enctype="multipart/form-data" action="/upload">
+  <input type="hidden" name="msgtype" value="2"/>
+  <input type="file" name="images" />
+  <input type="submit" value="Upload" />
+  <button type="submit">Submit</button>
+</form>

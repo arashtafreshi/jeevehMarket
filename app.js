@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var book = require('./routes/book');
 var article = require('./routes/article');
 var user = require('./routes/user');
+var upload = require('./routes/upload');
 var app = express();
 
 var mongoose = require('mongoose');
@@ -25,6 +26,20 @@ app.use('/articles', express.static(path.join(__dirname, 'dist')));
 app.use('/article', article);
 app.use('/users', express.static(path.join(__dirname, 'dist')));
 app.use('/user', user);
+
+//======================= Upload ======================================================
+app.use('/assets', express.static(path.join(__dirname, 'assets')));
+app.use('/upload', upload);
+
+
+
+
+
+
+//=========================================================
+
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

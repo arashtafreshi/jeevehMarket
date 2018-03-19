@@ -15,6 +15,8 @@ import { Link1Component } from '../../components/link1/link1.component';
 import { Link2Component } from '../../components/link2/link2.component';
 import { Link3Component } from '../../components/link3/link3.component';
 
+import { UploadFileComponent } from '../../components/upload-file/upload-file.component';
+
 // Admin
 import { AdminMainComponent } from '../../components/admin-main/admin-main.component';
 import { AdminArticlesComponent } from '../../components/admin-articles/admin-articles.component';
@@ -47,30 +49,34 @@ const appRoutes: Routes = [
         path: '',
         canActivateChild: [AuthGuardService],
         children: [
-          { 
+          {
             path: 'Articles',
-            component: AdminArticlesComponent 
+            component: AdminArticlesComponent
           },
-          { 
+          {
             path: 'Users',
-            component: AdminUsersComponent 
+            component: AdminUsersComponent
           },
-          { 
+          {
             path: 'Settings',
-            component: AdminSettingsComponent 
+            component: AdminSettingsComponent
           }
         ]
       }
     ]
   },
   {
+    path: 'UploadFileComponent',
+    component: UploadFileComponent
+  },
+  {
     path: '',
     component: HomeMasterComponent,
     //canActivate: [AuthGuardService],
     children: [
-      { 
+      {
         path: 'home',
-        component: CategoryItemComponent 
+        component: CategoryItemComponent
       }
     ]
   },

@@ -4,6 +4,9 @@ export class ArticleModel {
     image: string;
     author: string;
     date: Date;
+    content: string;
+    releaseDate: Date;
+    tags:string[];
 
     constructor() {
         this.header = null;
@@ -11,6 +14,9 @@ export class ArticleModel {
         this.image = null;
         this.author = null;
         this.date = null;
+        this.content = null;
+        this.releaseDate = null;
+        this.tags = [];
     }
 
     toString(): string {
@@ -19,7 +25,10 @@ export class ArticleModel {
             body: this.body,
             image: this.image,
             author: this.author,
-            date: this.date
+            date: this.date,
+            content: this.content,
+            releaseDate: this.releaseDate,
+            tags : this.tags
         }
         return JSON.stringify(str);
     }

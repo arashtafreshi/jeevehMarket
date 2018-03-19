@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {ArticleModel} from '../components/article/article-model';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
@@ -33,6 +33,14 @@ export class ArticleServiceService {
     //return articles;
   }
 
+  uploadFile(files : any): Observable<string>{
+    let httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'multipart/form-data',
+      })
+    };
+    return this.http.post<any>('/upload',files, httpOptions);
+  }
 
 
   constructor(private http:HttpClient) { }

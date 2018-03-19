@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import {} from '@angular/cdk';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import {AppRoutingModule} from './routing/app-routing/app-routing.module';
 
@@ -26,17 +28,21 @@ import { StripeComponent } from './components/stripe/stripe.component';
 import { StripeDirective } from './directives/stripe.directive';
 import { AdminMainComponent } from './components/admin-main/admin-main.component';
 
-// PrimeNG
+// Prime NG
 import {ContextMenuModule} from 'primeng/contextmenu';
+import {InputTextModule} from 'primeng/inputtext';
 import {DataViewModule} from 'primeng/dataview';
 import {TableModule} from 'primeng/table';
 import {CalendarModule} from 'primeng/calendar';
 import {ButtonModule} from 'primeng/button';
 import {FileUploadModule} from 'primeng/fileupload';
+import {EditorModule} from 'primeng/editor';
+
 
 import { AdminArticlesComponent } from './components/admin-articles/admin-articles.component';
 import { AdminUsersComponent } from './components/admin-users/admin-users.component';
 import { AdminSettingsComponent } from './components/admin-settings/admin-settings.component';
+import { UploadFileComponent } from './components/upload-file/upload-file.component';
 //import {MenuItem} from 'primeng/api';
 
 
@@ -57,7 +63,8 @@ import { AdminSettingsComponent } from './components/admin-settings/admin-settin
     AdminMainComponent,
     AdminArticlesComponent,
     AdminUsersComponent,
-    AdminSettingsComponent
+    AdminSettingsComponent,
+    UploadFileComponent
   ],
   imports: [
     BrowserModule,
@@ -65,12 +72,15 @@ import { AdminSettingsComponent } from './components/admin-settings/admin-settin
     FormsModule,
     OrderModule,
     BooksModule,
-    ContextMenuModule,
+    //ContextMenuModule,
     DataViewModule,
     TableModule,
     CalendarModule,
     ButtonModule,
     FileUploadModule,
+    InputTextModule,
+    EditorModule,
+    BrowserAnimationsModule,
     AppRoutingModule
   ],
   providers: [AuthService,AuthGuardService],

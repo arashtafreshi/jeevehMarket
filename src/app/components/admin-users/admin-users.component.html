@@ -6,7 +6,7 @@
   <div class="ui-g">
     <div [ngClass]="['ui-g-12']">
       <span class="ui-float-label">
-        <input id="firstName-input" type="text" [(ngModel)]="user.firstName" size="40" pInputText>
+        <input id="firstName-input" type="text" (ngModel)="user.firstName" size="40" pInputText>
         <label for="firstName-input">First Name</label>
       </span>
     </div>

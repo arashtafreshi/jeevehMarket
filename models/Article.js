@@ -6,6 +6,9 @@ var ArticleSchema = new mongoose.Schema({
     image: String,
     author: String,
     date: { type: Date, default: Date.now },
+    releaseDate: Date,
+    content: String,
+    tags:[String]
 });
 
 module.exports = mongoose.model('Article', ArticleSchema);
