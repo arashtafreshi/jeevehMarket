@@ -44,7 +44,7 @@ export class AddNewArticleComponent implements OnInit, OnChanges {
 
   uploaded(event){
     console.log(JSON.parse(event.xhr.response)[0]);
-    this.testimage = "images/" + JSON.parse(event.xhr.response)[0];
+    this.testimage = "assets/images/" + JSON.parse(event.xhr.response)[0];
   }
 
 }
