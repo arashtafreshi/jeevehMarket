@@ -9,6 +9,7 @@ import { ArticleServiceService } from '../../services/article-service.service';
   providers: [ArticleServiceService]
 })
 export class AddNewArticleComponent implements OnInit, OnChanges {
+  testimage = "";
   fileToUpload: File = null;
   article: ArticleModel = new ArticleModel();
   @Output() onArticleChanged: EventEmitter<ArticleModel> = new EventEmitter<ArticleModel>();
@@ -43,7 +44,7 @@ export class AddNewArticleComponent implements OnInit, OnChanges {
 
   uploaded(event){
     console.log(JSON.parse(event.xhr.response)[0]);
-    this.article.image = JSON.parse(event.xhr.response)[0];
+    this.testimage = "images/" + JSON.parse(event.xhr.response)[0];
   }
 
 }
