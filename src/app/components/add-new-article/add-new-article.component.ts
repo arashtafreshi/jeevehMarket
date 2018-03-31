@@ -1,27 +1,36 @@
 import { Component, OnInit, Output, EventEmitter, OnChanges, SimpleChange } from '@angular/core';
 import { ArticleModel } from '../article/article-model';
 import { ArticleServiceService } from '../../services/article-service.service';
+import { NgForm } from '@angular/forms';
+import { dbArticle } from '../../models/dbArticle';
+import { DbService } from '../../services/db.service';
+
+
 
 @Component({
   selector: 'app-add-new-article',
   templateUrl: './add-new-article.component.html',
   styleUrls: ['./add-new-article.component.css'],
-  providers: [ArticleServiceService]
+  providers: [ArticleServiceService, DbService]
 })
 export class AddNewArticleComponent implements OnInit, OnChanges {
   testimage = "";
   fileToUpload: File = null;
-  article: ArticleModel = new ArticleModel();
-  @Output() onArticleChanged: EventEmitter<ArticleModel> = new EventEmitter<ArticleModel>();
+  article: dbArticle = new dbArticle();
+
+  urlToUpload:string;
+
+  @Output() onArticleChanged: EventEmitter<dbArticle> = new EventEmitter<dbArticle>();
 
   addArticle(): void {
-    console.log(this.article.toString());
-    this.articleService.addArticle(this.article);
-    this.article = new ArticleModel();
-    this.article.image = "https://picsum.photos/300/300";
+    console.log("adding dbArticle", this.article);
+    this._db.SaveDocument(this.article).then(
+      data=>{console.log(data)},
+      error=>{console.log(error)}
+    );
   }
 
-  constructor(private articleService: ArticleServiceService) { }
+  constructor(private articleService: ArticleServiceService, private _db: DbService) { }
 
   ngOnInit() {
     this.onArticleChanged.emit(this.article);
@@ -42,9 +51,26 @@ export class AddNewArticleComponent implements OnInit, OnChanges {
     this.onArticleChanged.emit(this.article);
   }
 
-  uploaded(event){
+  uploaded(event) {
     console.log(JSON.parse(event.xhr.response)[0]);
     this.testimage = "assets/images/" + JSON.parse(event.xhr.response)[0];
+  }
+
+  uploadcouch(event) {
+    console.log(event);
+  }
+
+  myUploader(event){
+    console.log(event);
+    this._db.Upload(event, this.article).subscribe(
+      data=>{console.log(data)},
+      error=>{console.log(error)}
+    );
+  }
+
+  onSubmit(f: NgForm) {
+    console.log(f.value);  // { first: '', last: '' }
+    console.log(f.valid);  // false
   }
 
 }

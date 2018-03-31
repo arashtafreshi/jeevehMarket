@@ -28,11 +28,11 @@
           
           <div class=" ui-g" >
             <div class="ui-sm-6 ui-md-4 ui-lg-3" *ngFor="let article of articles">
-              <app-article [article]="article"></app-article>
+              <app-article [article]="article.value"></app-article>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  
+  <app-couchdb></app-couchdb>

@@ -41,7 +41,7 @@
     </span>
   </div>
   <div [ngClass]="['ui-g-12']">
-      <p-fileUpload id="file" name="file" url="/upload"  accept="image/*" maxFileSize="1000000" showUploadButton=true (uploadHandler)="myUploader($event)" (onUpload)="uploaded($event)"></p-fileUpload>
+      <p-fileUpload customUpload="true"  id="file" name="file" url="/api/couch/jeevehmarket/"  accept="image/*" maxFileSize="1000000" showUploadButton=true (uploadHandler)="myUploader($event)" ></p-fileUpload>
   </div>
   <div [ngClass]="['ui-g-12']">
     <p-editor [(ngModel)]="article.content" [style]="{'height':'520px'}"></p-editor>
@@ -49,4 +49,3 @@
   <p-button label="Add" (click)="addArticle()"></p-button>
 </div>
 
-<img [src]="testimage" alt=""/>

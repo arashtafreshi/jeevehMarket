@@ -1,35 +1,44 @@
 {
-    "/footballitarin":{
-        "target":"http://google.com/",
-        "secure":false,
-        "logLevel":"debug",
-        "changeOrigin":true,
-        "headers":{
+    "/footballitarin": {
+        "target": "http://google.com/",
+        "secure": false,
+        "logLevel": "debug",
+        "changeOrigin": true,
+        "headers": {
             "Access-Control-Allow-Origin": "*"
         }
     },
-    "/book/*":{
-        "target":"http://localhost:3000",
-        "secure":false,
-        "logLevel":"debug",
-        "changeOrigin":true
+    "/book/*": {
+        "target": "http://localhost:3000",
+        "secure": false,
+        "logLevel": "debug",
+        "changeOrigin": true
     },
-    "/user/*":{
-        "target":"http://localhost:3000",
-        "secure":false,
-        "logLevel":"debug",
-        "changeOrigin":true
+    "/user/*": {
+        "target": "http://localhost:3000",
+        "secure": false,
+        "logLevel": "debug",
+        "changeOrigin": true
     },
-    "/article/*":{
-        "target":"http://localhost:3000",
-        "secure":false,
-        "logLevel":"debug",
-        "changeOrigin":true
+    "/article/*": {
+        "target": "http://localhost:3000",
+        "secure": false,
+        "logLevel": "debug",
+        "changeOrigin": true
     },
-    "/upload":{
-        "target":"http://localhost:9090",
-        "secure":false,
-        "logLevel":"debug",
-        "changeOrigin":true
+    "/upload": {
+        "target": "http://localhost:9090",
+        "secure": false,
+        "logLevel": "debug",
+        "changeOrigin": true
+    },
+    "/api/couch/*": {
+        "target": "http://localhost:5984",
+        "secure": false,
+        "logLevel": "debug",
+        "changeOrigin": true,
+        "pathRewrite": {
+            "^/api/couch": ""
+        }
     }
 }

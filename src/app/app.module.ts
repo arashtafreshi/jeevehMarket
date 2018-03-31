@@ -43,6 +43,7 @@ import { AdminArticlesComponent } from './components/admin-articles/admin-articl
 import { AdminUsersComponent } from './components/admin-users/admin-users.component';
 import { AdminSettingsComponent } from './components/admin-settings/admin-settings.component';
 import { UploadFileComponent } from './components/upload-file/upload-file.component';
+import { CouchdbComponent } from './components/couchdb/couchdb.component';
 //import {MenuItem} from 'primeng/api';
 
 
@@ -64,7 +65,8 @@ import { UploadFileComponent } from './components/upload-file/upload-file.compon
     AdminArticlesComponent,
     AdminUsersComponent,
     AdminSettingsComponent,
-    UploadFileComponent
+    UploadFileComponent,
+    CouchdbComponent
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ArticleModel } from './article-model';
-import {ArticleServiceService} from '../../services/article-service.service';
+
+import { dbArticle } from '../../models/dbArticle';
 
 import {MenuItem} from 'primeng/api';
 
@@ -8,14 +8,14 @@ import {MenuItem} from 'primeng/api';
   selector: 'app-article',
   templateUrl: './article.component.html',
   styleUrls: ['./article.component.css'],
-  providers:[ArticleServiceService]
+  providers:[]
 })
 export class ArticleComponent implements OnInit {
-  @Input() article:ArticleModel;
+  @Input() article:dbArticle;
 
   private items: MenuItem[];
 
-  constructor(private articleService:ArticleServiceService) { }
+  constructor() { }
 
   ngOnInit() {
     //this.articles = this.articleService.getArticles();

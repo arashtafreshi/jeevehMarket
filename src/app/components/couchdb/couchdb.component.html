@@ -1,0 +1,48 @@
+<p>
+  couchdb works!
+</p>
+
+<input [(ngModel)]="document" [ngClass]="['form-control']">
+<button (click)="getArticle(document)">Get</button>
+{{document}}
+
+
+<h4>{{allDOcs}}</h4>
+
+<h3 class="first">Article DB</h3>
+<div class="ui-g">
+  <div [ngClass]="['ui-g-12']">
+    <span class="ui-float-label">
+      <input id="title-input" type="text" [(ngModel)]="dbArticle.title" size="40"  pInputText>
+      <label for="title-input">Title</label>
+    </span>
+  </div>
+  <div [ngClass]="['ui-g-12']">
+    <span class="ui-float-label">
+      <input id="author-input" type="text" [(ngModel)]="dbArticle.author" size="40" pInputText>
+      <label for="author-input">Author</label>
+    </span>
+  </div>
+  <div [ngClass]="['ui-g-12']">
+    <span class="ui-float-label">
+      <input id="body-input" type="text" [(ngModel)]="dbArticle.createdBy" size="40" pInputText>
+      <label for="body-input">created by</label>
+    </span>
+  </div>
+  <div [ngClass]="['ui-g-12']">
+    <span class="ui-float-label">
+      <p-calendar id="date-input" [(ngModel)]="dbArticle.publishDate"></p-calendar>
+      <label for="date-input">Publish Date</label>
+    </span>
+  </div>
+  <div [ngClass]="['ui-g-12']">
+    <span class="ui-float-label">
+      <input id="header-input" type="text" [(ngModel)]="dbArticle.header" size="40" pInputText>
+      <label for="header-input">Header</label>
+    </span>
+  </div>
+  
+  <p-button label="Add" (click)="addDbArticle()"></p-button>
+</div>
+
+<button (click)="GetSession()">Session</button>

@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ArticleComponent } from '../article/article.component';
 import { FormsModule } from '@angular/forms';
+import { dbArticle } from '../../models/dbArticle';
 
 import { ArticleModel } from '../article/article-model';
 
@@ -10,15 +11,15 @@ import { ArticleModel } from '../article/article-model';
   styleUrls: ['./admin-articles.component.css']
 })
 export class AdminArticlesComponent implements OnInit {
-  @Input() article: ArticleModel;
+  @Input() article: dbArticle;
 
   constructor() { }
 
   ngOnInit() {
-    this.article = new ArticleModel();
+    this.article = new dbArticle();
   }
 
-  onArticleChanged(inputArticle: ArticleModel) {
+  onArticleChanged(inputArticle: dbArticle) {
     this.article = inputArticle;
   }
 
