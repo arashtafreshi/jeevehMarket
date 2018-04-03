@@ -25,7 +25,7 @@ export class HomeMasterComponent implements OnInit {
   constructor(private _db:DbService, private sanitizer: DomSanitizer) { }
 
   ngOnInit() {
-    this._db.GetAllDocument().subscribe((data)=>this.articles=data.rows);
+    this._db.GetAllArticles().subscribe((data)=>this.articles=data.rows);
 
 
     this.googleAds = this.sanitizer.bypassSecurityTrustResourceUrl(this.googleAds);

@@ -1,6 +1,56 @@
 <p>
   admin-articles works!
 </p>
+
+<div class="container">
+  <div>
+    <button [ngClass]="['btn btn-primary']" (click)="newArticle()">
+      <i [ngClass]="['fa fa-plus']"></i> New</button>
+  </div>
+
+  <table [ngClass]="['table table-condensed table-stripped table-hover table-bordered']">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Title</th>
+        <th>Header</th>
+        <th>Content</th>
+        <th>Date Created</th>
+        <th>Date Published</th>
+        <th>Created By</th>
+        <th>Active</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let article of allArticles; index as i;">
+          <td>{{i+1}}</td>
+        <td [ngStyle]="{'background-color': null==article.value.title?'silver':''}">{{article.value.title}}</td>
+        <td [ngStyle]="{'background-color': null==article.value.header?'silver':''}">{{article.value.header}}</td>
+        <td [ngStyle]="{'background-color': null==article.value.content?'silver':''}">{{article.value.content}}</td>
+        <td [ngStyle]="{'background-color': null==article.value.dateCreated?'silver':''}">{{article.value.dateCreated | date:format:"shortDate"}}</td>
+        <td [ngStyle]="{'background-color': null==article.value.publishDate?'silver':''}">{{article.value.publishDate | date:format:"shortDate"}}</td>
+        <td [ngStyle]="{'background-color': null==article.value.createdBy?'silver':''}">{{article.value.createdBy}}</td>
+        <td [ngStyle]="{'background-color': null==article.value.active?'silver':''}">{{article.value.active}}</td>
+        <td>
+          <div class="row">
+            <div class="col-md-4 col-lg-4">
+              <button [ngClass]="['btn btn-default']" (click)="editArticle(article.id)">
+                <i [ngClass]="['fa fa-edit']"></i>
+              </button>
+            </div>
+            <div class="col-md-4 col-lg-4">
+              <button [ngClass]="['btn btn-danger']" (click)="deleteArticle(article.id)">
+                <i [ngClass]="['fa fa-trash']"></i>
+              </button>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
 <div [ngClass]="['ui-g']">
   <div [ngClass]="['ui-g-5 ui-md-6 ui-sm-12 ui-sx-12']">
     <app-add-new-article (onArticleChanged)="onArticleChanged($event)"></app-add-new-article>

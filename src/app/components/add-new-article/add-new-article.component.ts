@@ -1,9 +1,12 @@
 import { Component, OnInit, Output, EventEmitter, OnChanges, SimpleChange } from '@angular/core';
 import { ArticleModel } from '../article/article-model';
-import { ArticleServiceService } from '../../services/article-service.service';
 import { NgForm } from '@angular/forms';
 import { dbArticle } from '../../models/dbArticle';
 import { DbService } from '../../services/db.service';
+
+
+import {EditorModule} from "primeng/components/editor/editor";
+ import {SharedModule} from "primeng/components/common/shared";
 
 
 
@@ -11,7 +14,7 @@ import { DbService } from '../../services/db.service';
   selector: 'app-add-new-article',
   templateUrl: './add-new-article.component.html',
   styleUrls: ['./add-new-article.component.css'],
-  providers: [ArticleServiceService, DbService]
+  providers: [DbService]
 })
 export class AddNewArticleComponent implements OnInit, OnChanges {
   testimage = "";
@@ -24,13 +27,13 @@ export class AddNewArticleComponent implements OnInit, OnChanges {
 
   addArticle(): void {
     console.log("adding dbArticle", this.article);
-    this._db.SaveDocument(this.article).then(
+    this._db.Save(this.article).then(
       data=>{console.log(data)},
       error=>{console.log(error)}
     );
   }
 
-  constructor(private articleService: ArticleServiceService, private _db: DbService) { }
+  constructor( private _db: DbService) { }
 
   ngOnInit() {
     this.onArticleChanged.emit(this.article);
@@ -62,7 +65,7 @@ export class AddNewArticleComponent implements OnInit, OnChanges {
 
   myUploader(event){
     console.log(event);
-    this._db.Upload(event, this.article).subscribe(
+    this._db.Upload(event, this.article._id).then(
       data=>{console.log(data)},
       error=>{console.log(error)}
     );

@@ -37,6 +37,7 @@ import {CalendarModule} from 'primeng/calendar';
 import {ButtonModule} from 'primeng/button';
 import {FileUploadModule} from 'primeng/fileupload';
 import {EditorModule} from 'primeng/editor';
+import {PanelModule} from 'primeng/panel';
 
 
 import { AdminArticlesComponent } from './components/admin-articles/admin-articles.component';
@@ -83,6 +84,7 @@ import { CouchdbComponent } from './components/couchdb/couchdb.component';
     InputTextModule,
     EditorModule,
     BrowserAnimationsModule,
+    PanelModule,
     AppRoutingModule
   ],
   providers: [AuthService,AuthGuardService],

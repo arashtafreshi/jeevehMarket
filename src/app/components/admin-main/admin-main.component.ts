@@ -3,7 +3,7 @@ import { ArticleComponent } from '../article/article.component';
 import { FormsModule } from '@angular/forms';
 
 import { User } from '../../models/User';
-import {UserService} from '../../services/user.service';
+import {DbService} from '../../services/db.service';
 
 import { ArticleModel } from '../article/article-model';
 
@@ -11,7 +11,7 @@ import { ArticleModel } from '../article/article-model';
   selector: 'app-admin-main',
   templateUrl: './admin-main.component.html',
   styleUrls: ['./admin-main.component.css'],
-  providers:[UserService]
+  providers:[DbService]
 })
 export class AdminMainComponent implements OnInit {
   @Input() article: ArticleModel;
@@ -20,7 +20,7 @@ export class AdminMainComponent implements OnInit {
 
 
 
-  constructor(private userService:UserService) {}
+  constructor(private _db:DbService) {}
 
   ngOnInit() {
     this.article = new ArticleModel();
@@ -34,7 +34,7 @@ export class AdminMainComponent implements OnInit {
 
   addUser() {
     console.log(this.user);
-    this.userService.addUser(this.user).subscribe(
+    this._db.Save(this.user).then(
       data => {
         console.log('success', data);
         this.getAllUsers();
@@ -44,12 +44,12 @@ export class AdminMainComponent implements OnInit {
   }
 
   getAllUsers(){
-    this.userService.getUsers().subscribe((resp:User[])=>this.allUsers = resp);
+    this._db.GetAllUsers().subscribe((resp:User[])=>this.allUsers = resp);
   }
 
   deleteUser(usr:User){
     console.log("delete: "+usr);
-    this.userService.deleteUser(usr.externalId).subscribe(
+    this._db.Delete(usr._id).then(
       data => {
         console.log('success', data);
         this.getAllUsers();

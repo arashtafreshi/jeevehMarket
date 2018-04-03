@@ -3,29 +3,29 @@ import { FormsModule } from '@angular/forms';
 
 
 import { User } from '../../models/User';
-import {UserService} from '../../services/user.service';
+import { DbService } from '../../services/db.service';
 
 @Component({
   selector: 'app-admin-users',
   templateUrl: './admin-users.component.html',
   styleUrls: ['./admin-users.component.css'],
-  providers:[UserService]
+  providers: [DbService]
 })
 export class AdminUsersComponent implements OnInit {
 
-  user:User;
-  allUsers:User[];
+  user: User;
+  allUsers: User[];
 
-  constructor(private userService:UserService) { }
+  constructor(private _db: DbService) { }
 
   ngOnInit() {
     this.user = new User();
-    this.getAllUsers();
+    this._db.GetAllUsers().subscribe((data)=>this.allUsers=data.rows);
   }
 
   addUser() {
-    console.log(this.user);
-    this.userService.addUser(this.user).subscribe(
+    console.log("User to add: ", this.user);
+    this._db.Save(this.user).then(
       data => {
         console.log('success', data);
         this.getAllUsers();
@@ -34,20 +34,19 @@ export class AdminUsersComponent implements OnInit {
     );
   }
 
-  getAllUsers(){
-    this.userService.getUsers().subscribe((resp:User[])=>this.allUsers = resp);
+  getAllUsers() {
+    this._db.GetAllUsers().subscribe(resp =>{
+      this.allUsers = resp.rows;
+    });
   }
 
-  deleteUser(usr:User){
-    console.log("delete: "+usr);
-    this.userService.deleteUser(usr.externalId).subscribe(
+  deleteUser(id: string) {
+    this._db.Delete(id).then(
       data => {
-        console.log('success', data);
         this.getAllUsers();
       },
-      error => console.log('oops', error)
+      error => console.error('deleteUser', error)
     );
-    
   }
 
 

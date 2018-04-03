@@ -23,7 +23,7 @@ export class CouchdbComponent implements OnInit {
 
   getArticle(docId: string) {
     let article:dbArticle;
-    this._db.GetArticle(docId).subscribe(
+    this._db.GetDocumentById(docId).subscribe(
       data => {
         console.log('success', data);
         this.document = data["type"];
@@ -35,7 +35,7 @@ export class CouchdbComponent implements OnInit {
   }
 
   getAllDocuments(): any {
-    this._db.GetAllDocument().subscribe(
+    this._db.GetAllArticles().subscribe(
       data => { return data; },
       error => { return error; }
     );
@@ -43,7 +43,7 @@ export class CouchdbComponent implements OnInit {
 
   addDbArticle(){
     console.log("adding dbArticle", this.dbArticle);
-    this._db.SaveDocument(this.dbArticle).then(
+    this._db.Save(this.dbArticle).then(
       data=>{console.log(data)},
       error=>{console.log(error)}
     );

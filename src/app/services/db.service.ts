@@ -1,29 +1,37 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 
 import { dbArticle } from '../models/dbArticle';
 import { promise } from 'protractor';
+import { User } from '../models/User';
+import { QueryEncoder } from '@angular/http';
+
+
+const dbUrl: string = "/api/couch/jeevehmarket/";
 
 @Injectable()
 export class DbService {
+  currentUser:User;
 
   constructor(private httpClient: HttpClient) { }
 
-  GetArticle(docId: string): Observable<dbArticle> {
+  GetDocumentById(docId: string): Observable<dbArticle> {
     return this.httpClient.get<dbArticle>("/api/couch/jeevehmarket/" + docId);
   }
 
-  GetAllDocument(): Observable<any> {
-    return this.httpClient.get("/api/couch/jeevehmarket/_design/article/_view/all");
+  GetAllArticles(): Observable<any> {
+    return this.httpClient.get(dbUrl + "_design/article/_view/all");
   }
 
-  async SaveDocument(newDocument: any): Promise<any> {
-    let url = "/api/couch/jeevehmarket/";
-    console.log(url);
+  GetAllUsers(): Observable<any> {
+    return this.httpClient.get(dbUrl + "_design/user/_view/all");
+  }
+
+  async Save(newDocument: any): Promise<any> {
+    let url = dbUrl;
     delete newDocument["_id"];
     delete newDocument["_rev"];
-    console.log("parsed object: ", JSON.stringify(newDocument));
     let newId: string;
 
     await this.GetId()
@@ -37,15 +45,19 @@ export class DbService {
 
   }
 
-  DeleteDocument(docId: string): Observable<any> {
+  async Delete(docId: string): Promise<any> {
     let revId = "";
-    this.GetArticle(docId).subscribe(
+    await this.GetLatestRevById(docId).then(
       data => {
-        revId = data["rev"]
+        revId = data["_rev"];
       },
       error => console.log(error)
     );
-    return this.httpClient.delete("/api/couch/jeevehmarket/" + docId + "?rev=" + revId);
+    return this.httpClient.delete(dbUrl + docId + "?rev=" + revId).toPromise();
+  }
+
+  Update(docId: string, doc:any): Promise<any> {
+    return this.httpClient.put(dbUrl + doc["_id"], JSON.stringify(doc)).toPromise();
   }
 
   GetSession(): Observable<any> {
@@ -61,18 +73,32 @@ export class DbService {
     return this.httpClient.get("/api/couch/_uuids?count=1").toPromise();
   }
 
-  Upload(event: any[], document: any): Observable<any> {
+  async Upload(event: any[], id: string): Promise<any> {
     for (let i = 0; i < event["files"].count; i++) {
       let file = event["files"][i]
       //let url = "/api/couch/jeevehmarket/" + document["_id"] + "/" + file["name"] + "?rev=" + document["_rev"];
-      let url = "/api/couch/jeevehmarket/"+document["_id"]+"/"+file["name"]+"?rev="+document["_rev"];
+      let rev;
+      await this.GetLatestRevById(id).then(data => rev = data);
+
+      let url = dbUrl + id + "/" + file["name"] + "?rev=" + rev;
       let fileType = file["type"];
       let headers = new HttpHeaders({
         "content-type": fileType
       });
-      return this.httpClient.put(url, file, { headers: headers });
+      this.httpClient.put(url, file, { headers: headers });
     }
+  }
 
+  verifyLogin(email:string, password:string):Promise<any>{
+    let httpParams = new HttpParams()
+    .append("group","true")
+    .append("key",email);
+
+    return this.httpClient.get(dbUrl + "_design/user/_view/login?"+httpParams).toPromise();
+  }
+
+  GetLatestRevById(id: string): Promise<any> {
+    return this.httpClient.get(dbUrl + id).toPromise();
   }
 
 }

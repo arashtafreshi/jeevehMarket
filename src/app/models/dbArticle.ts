@@ -8,7 +8,7 @@ export class dbArticle {
     header: string;
     tags: string[];
     dateCreated: Date;
-    createdBy: string;
+    createdBy: String;
     active: boolean;
     content: string;
     lastModifiedBy: string;
@@ -16,7 +16,8 @@ export class dbArticle {
     sharedWith: string[];
     permission: string[];
     author: string;
-    publishDate: Date;
+    datePublished: Date;
+    _attachments:any;
 
     constructor() {
         this._id = null;
@@ -25,7 +26,7 @@ export class dbArticle {
         this.title = null;
         this.header = null;
         this.tags = [];
-        this.dateCreated = null;
+        this.dateCreated = new Date(Date.now());
         this.createdBy = null;
         this.active = null;
         this.content = null;
@@ -34,9 +35,6 @@ export class dbArticle {
         this.sharedWith = [];
         this.permission = [];
         this.author = null;
-        this.publishDate = null;
+        this.datePublished = null;
     }
 }
-
-
-

@@ -6,7 +6,7 @@
   <div class="ui-g">
     <div [ngClass]="['ui-g-12']">
       <span class="ui-float-label">
-        <input id="firstName-input" type="text" (ngModel)="user.firstName" size="40" pInputText>
+        <input id="firstName-input" type="text" [(ngModel)]="user.firstName" size="40" pInputText>
         <label for="firstName-input">First Name</label>
       </span>
     </div>
@@ -25,38 +25,50 @@
     <p-button (click)="addUser()" label="Add User"></p-button>
   </div>
 
-  <p-table [value]="allUsers">
-    <ng-template pTemplate="header">
-      <tr>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>ExternalId</th>
-        <th>Address</th>
-        <th>Created date</th>
-        <th>Email</th>
-        <th>Gender</th>
-        <th>Delete</th>
-      </tr>
-    </ng-template>
-    <ng-template pTemplate="body" let-usr>
-      <tr>
-        <td>{{usr.firstName}}</td>
-        <td>{{usr.lastName}}</td>
-        <td>{{usr.externalId}}</td>
-        <td>
-          <div>{{usr.address.address_1}}</div>
-          <div>{{usr.address.address_2}}</div>
-          <div>{{usr.address.city}}, {{usr.address.state}} {{usr.address.zipcode}}</div>
-        </td>
-        <td>{{usr.created_date}}</td>
-        <td>{{usr.email}}</td>
-        <td>{{usr.gender}}</td>
-        <td>
-          <button [ngClass]="['btn btn-danger']" (click)="deleteUser(usr)">
-            <i [ngClass]="['fa fa-trash']"></i>
-          </button>
-        </td>
-      </tr>
-    </ng-template>
-  </p-table>
+  <table [ngClass]="['table table-condensed table-stripped table-hover table-bordered']">
+      <thead>
+        <tr>
+          <th></th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+          <th>Middle Name</th>
+          <th>Gender</th>
+          <th>Role</th>
+          <th>Phone</th>
+          <th>Birthday</th>
+          <th>Active</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of allUsers; index as i;">
+            <td>{{i+1}}</td>
+          <td [ngStyle]="{'background-color': null==user.value.firstName?'silver':''}">{{user.value.firstName}}</td>
+          <td [ngStyle]="{'background-color': null==user.value.lastName?'silver':''}">{{user.value.lastName}}</td>
+          <td [ngStyle]="{'background-color': null==user.value.email?'silver':''}">{{user.value.email}}</td>
+          <td [ngStyle]="{'background-color': null==user.value.middleName?'silver':''}">{{user.value.middleName}}</td>
+          <td [ngStyle]="{'background-color': null==user.value.gender?'silver':''}">{{user.value.gender}}</td>
+          <td [ngStyle]="{'background-color': null==user.value.role?'silver':''}">{{user.value.role}}</td>
+          <td [ngStyle]="{'background-color': null==user.value.phone?'silver':''}">{{user.value.phone}}</td>
+          <td [ngStyle]="{'background-color': null==user.value.birthDate?'silver':''}">{{user.value.birthDate | date:format:"shortDate"}}</td>
+          <td>
+            <div class="row">
+              <div class="col-md-4 col-lg-4">
+                <button [ngClass]="['btn btn-default']" (click)="alert(user.id)">
+                  <i [ngClass]="['fa fa-edit']"></i>
+                </button>
+              </div>
+              <div class="col-md-4 col-lg-4">
+                <button [ngClass]="['btn btn-danger']" (click)="deleteUser(user.id)">
+                  <i [ngClass]="['fa fa-trash']"></i>
+                </button>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+
+ 
 </div>
