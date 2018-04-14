@@ -1,25 +1,29 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 import { Message } from 'primeng/api';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'app-login-signin',
+  templateUrl: './login-signin.component.html',
+  styleUrls: ['./login-signin.component.css'],
+  providers:[AuthService]
 })
-export class LoginComponent {
+export class LoginSigninComponent implements OnInit {
   message: string;
-  isLoggedIn = false;
   msgs:Message[] = [];
   doSpin:boolean=false;
 
-  constructor(public authService: AuthService, public router: Router) {
+  constructor(public authService: AuthService, public router: Router) { 
     this.setMessage();
   }
 
   setMessage() {
     this.message = 'Logged ' + (this.authService.isLoggedIn ? 'in' : 'out');
+  }
+
+  ngOnInit() {
+    this.msgs.push({severity:'error', summary:'Username/Password', detail:'The username/password is wrong. Please try again.'});
   }
 
   login() {
@@ -36,16 +40,6 @@ export class LoginComponent {
         this.router.navigate([redirect]);
       }
     });
-  }
-
-  logout() {
-    this.authService.logout();
-    this.setMessage();
-  }
-
-  ngOnInit() {
-    this.msgs.push({severity:'error', summary:'Username/Password', detail:'The username/password is wrong. Please try again.'});
-    this.isLoggedIn = this.authService.isLoggedIn;
   }
 
 }

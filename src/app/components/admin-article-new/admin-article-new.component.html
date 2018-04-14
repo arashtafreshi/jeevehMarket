@@ -1,0 +1,12 @@
+<p>
+  admin-article-new works!
+</p>
+
+<div [ngClass]="['ui-g']">
+  <div [ngClass]="['ui-g-5 ui-md-6 ui-sm-12 ui-sx-12']">
+    <app-add-new-article (onArticleChanged)="onArticleChanged($event)"></app-add-new-article>
+  </div>
+  <div [ngClass]="['ui-lg-3 ui-md-6 ui-sm-12 ui-sx-12']">
+    <app-article [article]="article"></app-article>
+  </div>
+</div>

@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { dbArticle } from '../../models/dbArticle';
 
 import {MenuItem} from 'primeng/api';
+import { dbArticle } from '../../models/dbArticle';
 
 @Component({
   selector: 'app-article',

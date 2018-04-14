@@ -2,10 +2,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import {} from '@angular/cdk';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { } from '@angular/cdk';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import {AppRoutingModule} from './routing/app-routing/app-routing.module';
+import { AppRoutingModule } from './routing/app-routing/app-routing.module';
 
 import { AppComponent } from './app.component';
 import { HomeMasterComponent } from './components/home-master/home-master.component';
@@ -18,8 +18,8 @@ import { ArticleComponent } from './components/article/article.component';
 import { AddNewArticleComponent } from './components/add-new-article/add-new-article.component';
 import { ROUTES } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
-import {AuthGuardService} from './services/auth-guard.service';
-import {AuthService} from './services/auth.service';
+import { AuthGuardService } from './services/auth-guard.service';
+import { AuthService } from './services/auth.service';
 
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { OrderModule } from './components/order/order/order.module';
@@ -29,15 +29,22 @@ import { StripeDirective } from './directives/stripe.directive';
 import { AdminMainComponent } from './components/admin-main/admin-main.component';
 
 // Prime NG
-import {ContextMenuModule} from 'primeng/contextmenu';
-import {InputTextModule} from 'primeng/inputtext';
-import {DataViewModule} from 'primeng/dataview';
-import {TableModule} from 'primeng/table';
-import {CalendarModule} from 'primeng/calendar';
-import {ButtonModule} from 'primeng/button';
-import {FileUploadModule} from 'primeng/fileupload';
-import {EditorModule} from 'primeng/editor';
-import {PanelModule} from 'primeng/panel';
+import { ContextMenuModule } from 'primeng/contextmenu';
+import { InputTextModule } from 'primeng/inputtext';
+import { DataViewModule } from 'primeng/dataview';
+import { TableModule } from 'primeng/table';
+import { CalendarModule } from 'primeng/calendar';
+import { ButtonModule } from 'primeng/button';
+import { FileUploadModule } from 'primeng/fileupload';
+import { EditorModule } from 'primeng/editor';
+import { PanelModule } from 'primeng/panel';
+import {TabViewModule} from 'primeng/tabview';
+import {TreeModule} from 'primeng/tree';
+import {MessagesModule} from 'primeng/messages';
+import {MessageModule} from 'primeng/message';
+import {CaptchaModule} from 'primeng/captcha';
+import {ProgressSpinnerModule} from 'primeng/progressspinner';
+
 
 
 import { AdminArticlesComponent } from './components/admin-articles/admin-articles.component';
@@ -45,6 +52,12 @@ import { AdminUsersComponent } from './components/admin-users/admin-users.compon
 import { AdminSettingsComponent } from './components/admin-settings/admin-settings.component';
 import { UploadFileComponent } from './components/upload-file/upload-file.component';
 import { CouchdbComponent } from './components/couchdb/couchdb.component';
+import { HomepageComponent } from './components/homepage/homepage.component';
+import { AdminArticleOverviewComponent } from './components/admin-article-overview/admin-article-overview.component';
+import { AdminArticleNewComponent } from './components/admin-article-new/admin-article-new.component';
+import { AdminArticleEditComponent } from './components/admin-article-edit/admin-article-edit.component';
+import { LoginSigninComponent } from './components/login-signin/login-signin.component';
+import { LoginSignoutComponent } from './components/login-signout/login-signout.component';
 //import {MenuItem} from 'primeng/api';
 
 
@@ -67,7 +80,13 @@ import { CouchdbComponent } from './components/couchdb/couchdb.component';
     AdminUsersComponent,
     AdminSettingsComponent,
     UploadFileComponent,
-    CouchdbComponent
+    CouchdbComponent,
+    HomepageComponent,
+    AdminArticleOverviewComponent,
+    AdminArticleNewComponent,
+    AdminArticleEditComponent,
+    LoginSigninComponent,
+    LoginSignoutComponent
   ],
   imports: [
     BrowserModule,
@@ -85,9 +104,15 @@ import { CouchdbComponent } from './components/couchdb/couchdb.component';
     EditorModule,
     BrowserAnimationsModule,
     PanelModule,
+    TabViewModule,
+    TreeModule,
+    MessagesModule,
+    MessageModule,
+    CaptchaModule,
+    ProgressSpinnerModule,
     AppRoutingModule
   ],
-  providers: [AuthService,AuthGuardService],
+  providers: [AuthService, AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

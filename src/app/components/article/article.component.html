@@ -8,7 +8,7 @@
       <table>
         <tr>
           <td>{{article.author}} | </td>
-          <td>{{article.publishDate | date:format:"shortDate"}}</td>
+          <td> {{ article.datePublished | date:format:"shortDate"}}<article class="datePublished"></article></td>
         </tr>
       </table>
     </div>

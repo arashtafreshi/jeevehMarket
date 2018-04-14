@@ -18,14 +18,14 @@
   </div>
   <div [ngClass]="['ui-g-12']">
     <span class="ui-float-label">
-      <input id="body-input" type="text" [(ngModel)]="article.body" size="40" pInputText>
+      <input id="body-input" type="text" [(ngModel)]="article.content" size="40" pInputText>
       <label for="body-input">Body</label>
     </span>
   </div>
   <div [ngClass]="['ui-g-12']">
     <span class="ui-float-label">
-      <p-calendar id="date-input" [(ngModel)]="article.date"></p-calendar>
-      <label for="date-input">Date</label>
+      <p-calendar id="date-input" [(ngModel)]="article.datePublished"></p-calendar>
+      <label for="date-input">Date Published</label>
     </span>
   </div>
   <div [ngClass]="['ui-g-12']">
@@ -34,18 +34,19 @@
       <label for="header-input">Header</label>
     </span>
   </div>
-  <div [ngClass]="['ui-g-12']">
+  <!--<div [ngClass]="['ui-g-12']">
     <span class="ui-float-label">
       <input id="image-input" type="text" [(ngModel)]="article.image" size="40" pInputText>
       <label for="image-input">Image</label>
     </span>
-  </div>
+  </div>-->
   <div [ngClass]="['ui-g-12']">
       <p-fileUpload customUpload="true"  id="file" name="file" url="/api/couch/jeevehmarket/"  accept="image/*" maxFileSize="5000000" showUploadButton=true (uploadHandler)="myUploader($event)" ></p-fileUpload>
   </div>
-  <div [ngClass]="['ui-g-12']">
+  <!--<div [ngClass]="['ui-g-12']">
     <p-editor [(ngModel)]="article.content" [style]="{'height':'520px'}"></p-editor>
   </div>
+-->
   <p-button label="Add" (click)="addArticle()"></p-button>
 </div>
 

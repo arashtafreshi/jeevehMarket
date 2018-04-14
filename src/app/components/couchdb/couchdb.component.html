@@ -7,7 +7,7 @@
 {{document}}
 
 
-<h4>{{allDOcs}}</h4>
+<!--<h4>{{allDOcs}}</h4>-->
 
 <h3 class="first">Article DB</h3>
 <div class="ui-g">
@@ -31,7 +31,7 @@
   </div>
   <div [ngClass]="['ui-g-12']">
     <span class="ui-float-label">
-      <p-calendar id="date-input" [(ngModel)]="dbArticle.publishDate"></p-calendar>
+      <p-calendar id="date-input" [(ngModel)]="dbArticle.datePublished"></p-calendar>
       <label for="date-input">Publish Date</label>
     </span>
   </div>
