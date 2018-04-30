@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, SimpleChange } from '@angular/core';
 import { DbService } from '../../services/db.service';
 import { dbArticle } from '../../models/dbArticle';
 
@@ -12,7 +12,7 @@ import {TreeNode} from 'primeng/api';
 })
 export class AdminArticleOverviewComponent implements OnInit {
   allArticles:dbArticle[];
-
+  @Output() onArticleEdit: EventEmitter<dbArticle> = new EventEmitter<dbArticle>();
   articleTree:TreeNode[];
 
   constructor(private _db:DbService) { }
@@ -21,16 +21,20 @@ export class AdminArticleOverviewComponent implements OnInit {
     this._db.GetAllArticles().subscribe((data)=>{
       this.allArticles=data.rows;
     });
-    
+    this.onArticleEdit.emit(new dbArticle);
   }
 
   deleteArticle(id:string){
     this._db.Delete(id);
   }
 
-  editArticle(id:string){
-    alert("Editing article "+id);
+  editArticle(article:dbArticle){
+    console.log(article);
+    this.onArticleEdit.emit(article);
   }
+
+
+  
 
 
 }

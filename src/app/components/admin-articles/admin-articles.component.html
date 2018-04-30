@@ -4,13 +4,12 @@
 
 <p-tabView>
   <p-tabPanel header="Overview">
-    <app-admin-article-overview></app-admin-article-overview>
+    <app-admin-article-overview (onArticleEdit)="onArticleEdit($event)"></app-admin-article-overview>
   </p-tabPanel>
   <p-tabPanel header="Add new">
       <app-admin-article-new></app-admin-article-new>
   </p-tabPanel>
   <p-tabPanel header="Edit">
-      <app-admin-article-edit></app-admin-article-edit>  
+      <app-admin-article-edit [article]="article"></app-admin-article-edit>  
   </p-tabPanel>
 </p-tabView>
-

@@ -1,8 +1,4 @@
-import {
-  Component,
-  OnInit,
-  Pipe, PipeTransform
-} from '@angular/core';
+import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 import { DomSanitizer, SafeHtml, SafeStyle, SafeScript, SafeUrl, SafeResourceUrl } from '@angular/platform-browser';

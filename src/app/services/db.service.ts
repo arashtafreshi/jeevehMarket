@@ -57,7 +57,7 @@ export class DbService {
   }
 
   Update(docId: string, doc:any): Promise<any> {
-    return this.httpClient.put(dbUrl + doc["_id"], JSON.stringify(doc)).toPromise();
+    return this.httpClient.put(dbUrl + doc.value._id, JSON.stringify(doc.value)).toPromise();
   }
 
   GetSession(): Observable<any> {

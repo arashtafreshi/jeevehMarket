@@ -40,9 +40,6 @@
       <label for="image-input">Image</label>
     </span>
   </div>-->
-  <div [ngClass]="['ui-g-12']">
-      <p-fileUpload customUpload="true"  id="file" name="file" url="/api/couch/jeevehmarket/"  accept="image/*" maxFileSize="5000000" showUploadButton=true (uploadHandler)="myUploader($event)" ></p-fileUpload>
-  </div>
   <!--<div [ngClass]="['ui-g-12']">
     <p-editor [(ngModel)]="article.content" [style]="{'height':'520px'}"></p-editor>
   </div>

@@ -38,12 +38,18 @@ import { ButtonModule } from 'primeng/button';
 import { FileUploadModule } from 'primeng/fileupload';
 import { EditorModule } from 'primeng/editor';
 import { PanelModule } from 'primeng/panel';
-import {TabViewModule} from 'primeng/tabview';
-import {TreeModule} from 'primeng/tree';
-import {MessagesModule} from 'primeng/messages';
-import {MessageModule} from 'primeng/message';
-import {CaptchaModule} from 'primeng/captcha';
-import {ProgressSpinnerModule} from 'primeng/progressspinner';
+import { TabViewModule } from 'primeng/tabview';
+import { TreeModule } from 'primeng/tree';
+import { MessagesModule } from 'primeng/messages';
+import { MessageModule } from 'primeng/message';
+import { CaptchaModule } from 'primeng/captcha';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { SidebarModule } from 'primeng/sidebar';
+import { MenubarModule } from 'primeng/menubar';
+import { StepsModule } from 'primeng/steps';
+import { PanelMenuModule } from 'primeng/panelmenu';
+import { MenuModule } from 'primeng/menu';
+import { InputSwitchModule } from 'primeng/inputswitch';
 
 
 
@@ -58,6 +64,7 @@ import { AdminArticleNewComponent } from './components/admin-article-new/admin-a
 import { AdminArticleEditComponent } from './components/admin-article-edit/admin-article-edit.component';
 import { LoginSigninComponent } from './components/login-signin/login-signin.component';
 import { LoginSignoutComponent } from './components/login-signout/login-signout.component';
+import { MenuTopnavComponent } from './components/menu-topnav/menu-topnav.component';
 //import {MenuItem} from 'primeng/api';
 
 
@@ -86,7 +93,8 @@ import { LoginSignoutComponent } from './components/login-signout/login-signout.
     AdminArticleNewComponent,
     AdminArticleEditComponent,
     LoginSigninComponent,
-    LoginSignoutComponent
+    LoginSignoutComponent,
+    MenuTopnavComponent
   ],
   imports: [
     BrowserModule,
@@ -110,6 +118,12 @@ import { LoginSignoutComponent } from './components/login-signout/login-signout.
     MessageModule,
     CaptchaModule,
     ProgressSpinnerModule,
+    SidebarModule,
+    MenubarModule,
+    StepsModule,
+    PanelMenuModule,
+    MenuModule,
+    InputSwitchModule,
     AppRoutingModule
   ],
   providers: [AuthService, AuthGuardService],

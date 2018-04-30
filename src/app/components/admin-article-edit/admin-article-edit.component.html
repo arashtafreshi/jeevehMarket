@@ -1,3 +1,123 @@
 <p>
   admin-article-edit works!
 </p>
+
+
+
+<h3 class="first">Article</h3>
+
+<div class="ui-g">
+  <div [ngClass]="['ui-g-12']">
+    <span class="ui-float-label">
+      <input id="title-input" type="text" [(ngModel)]="article.value._id" size="40" [disabled]="true" pInputText>
+      <label for="title-input">ID</label>
+    </span>
+  </div>
+  <div [ngClass]="['ui-g-12']">
+    <span class="ui-float-label">
+      <input id="title-input" type="text" [(ngModel)]="article.value._rev" size="40" [disabled]="true" pInputText>
+      <label for="title-input">Rev.</label>
+    </span>
+  </div>
+  <div [ngClass]="['ui-g-12']">
+    <span class="ui-float-label">
+      <input id="title-input" type="text" [(ngModel)]="article.value.type" size="40" [disabled]="true" pInputText>
+      <label for="title-input">Type</label>
+    </span>
+  </div>
+  <div [ngClass]="['ui-g-12']">
+    <span class="ui-float-label">
+      <input id="title-input" type="text" [(ngModel)]="article.value.title" size="40" pInputText>
+      <label for="title-input">Title</label>
+    </span>
+  </div>
+  <div [ngClass]="['ui-g-12']">
+    <span class="ui-float-label">
+      <input id="header-input" type="text" [(ngModel)]="article.value.header" size="40" pInputText>
+      <label for="header-input">Header</label>
+    </span>
+  </div>
+  <div [ngClass]="['ui-g-12']">
+    <span class="ui-float-label">
+      <input id="header-input" type="text" [(ngModel)]="article.value.tags" size="40" pInputText>
+      <label for="header-input">Tags</label>
+    </span>
+  </div>
+  <div [ngClass]="['ui-g-12']">
+    <span class="ui-float-label">
+      <p-calendar id="date-input" [(ngModel)]="article.value.dateCreated"></p-calendar>
+      <label for="date-input">Date Created</label>
+    </span>
+  </div>
+  <div [ngClass]="['ui-g-12']">
+    <span class="ui-float-label">
+      <input id="author-input" type="text" [(ngModel)]="article.value.createdBy" size="40" pInputText>
+      <label for="author-input">Created By</label>
+    </span>
+  </div>
+  <div [ngClass]="['ui-g-12']">
+    <span class="ui-label">
+      <p-inputSwitch id="author-input" onLabel="Active" offLabel="Inactive" [(ngModel)]="article.value.active"></p-inputSwitch>
+    </span>
+  </div>
+  <div [ngClass]="['ui-g-12']">
+    <span class="ui-float-label">
+      <input id="body-input" type="text" [(ngModel)]="article.value.content" size="40" pInputText>
+      <label for="body-input">Content</label>
+    </span>
+  </div>
+  <div [ngClass]="['ui-g-12']">
+    <span class="ui-float-label">
+      <input id="body-input" type="text" [(ngModel)]="article.value.lastModifiedBy" size="40" [disabled]="true" pInputText>
+      <label for="body-input">Last Modified By</label>
+    </span>
+  </div>
+  <div [ngClass]="['ui-g-12']">
+    <span class="ui-float-label">
+      <input id="body-input" type="text" [(ngModel)]="article.value.dateLastModifed" size="40" [disabled]="true" pInputText>
+      <label for="body-input">Date Last Modified</label>
+    </span>
+  </div>
+  <div [ngClass]="['ui-g-12']">
+    <span class="ui-float-label">
+      <input id="body-input" type="text" [(ngModel)]="article.value.sharedWith" size="40" pInputText>
+      <label for="body-input">Shared With</label>
+    </span>
+  </div>
+  <div [ngClass]="['ui-g-12']">
+    <span class="ui-float-label">
+      <input id="body-input" type="text" [(ngModel)]="article.value.permission" size="40" pInputText>
+      <label for="body-input">Permission</label>
+    </span>
+  </div>
+  <div [ngClass]="['ui-g-12']">
+    <span class="ui-float-label">
+      <input id="author-input" type="text" [(ngModel)]="article.value.author" size="40" pInputText>
+      <label for="author-input">Author</label>
+    </span>
+  </div>
+
+  <div [ngClass]="['ui-g-12']">
+    <span class="ui-float-label">
+      <p-calendar id="date-input" [(ngModel)]="article.value.datePublished"></p-calendar>
+      <label for="date-input">Date Published</label>
+    </span>
+  </div>
+
+  <!--<div [ngClass]="['ui-g-12']">
+    <span class="ui-float-label">
+      <input id="image-input" type="text" [(ngModel)]="article.image" size="40" pInputText>
+      <label for="image-input">Image</label>
+    </span>
+  </div>-->
+  <div [ngClass]="['ui-g-12']">
+    <p-fileUpload customUpload="true" id="file" name="file" url="/api/couch/jeevehmarket/" accept="image/*" maxFileSize="5000000"
+      showUploadButton=true (uploadHandler)="myUploader($event)"></p-fileUpload>
+  </div>
+  <!--<div [ngClass]="['ui-g-12']">
+    <p-editor [(ngModel)]="article.content" [style]="{'height':'520px'}"></p-editor>
+  </div>
+-->
+  <p-button label="Save Changes" (click)="updateArticle()"></p-button>
+  <p-progressSpinner *ngIf="isUpdating"></p-progressSpinner>
+</div>
