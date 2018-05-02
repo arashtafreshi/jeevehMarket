@@ -11,7 +11,7 @@ import {TreeNode} from 'primeng/api';
   providers:[DbService]
 })
 export class AdminArticleOverviewComponent implements OnInit {
-  allArticles:dbArticle[];
+  allArticles:dbArticle[] = [];
   @Output() onArticleEdit: EventEmitter<dbArticle> = new EventEmitter<dbArticle>();
   articleTree:TreeNode[];
 
@@ -19,9 +19,12 @@ export class AdminArticleOverviewComponent implements OnInit {
 
   ngOnInit() {
     this._db.GetAllArticles().subscribe((data)=>{
-      this.allArticles=data.rows;
+      data.rows.forEach(element => {
+        this.allArticles.push(element.value)
+      });
+      this.onArticleEdit.emit(new dbArticle);
     });
-    this.onArticleEdit.emit(new dbArticle);
+    
   }
 
   deleteArticle(id:string){

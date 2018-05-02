@@ -9,98 +9,107 @@
 <div class="ui-g">
   <div [ngClass]="['ui-g-12']">
     <span class="ui-float-label">
-      <input id="title-input" type="text" [(ngModel)]="article.value._id" size="40" [disabled]="true" pInputText>
+      <input id="title-input" type="text" [(ngModel)]="article._id" size="40" [disabled]="true" pInputText>
       <label for="title-input">ID</label>
     </span>
   </div>
   <div [ngClass]="['ui-g-12']">
     <span class="ui-float-label">
-      <input id="title-input" type="text" [(ngModel)]="article.value._rev" size="40" [disabled]="true" pInputText>
+      <input id="title-input" type="text" [(ngModel)]="article._rev" size="40" [disabled]="true" pInputText>
       <label for="title-input">Rev.</label>
     </span>
   </div>
   <div [ngClass]="['ui-g-12']">
     <span class="ui-float-label">
-      <input id="title-input" type="text" [(ngModel)]="article.value.type" size="40" [disabled]="true" pInputText>
+      <input id="title-input" type="text" [(ngModel)]="article.type" size="40" [disabled]="true" pInputText>
       <label for="title-input">Type</label>
     </span>
   </div>
   <div [ngClass]="['ui-g-12']">
     <span class="ui-float-label">
-      <input id="title-input" type="text" [(ngModel)]="article.value.title" size="40" pInputText>
+      <input id="title-input" type="text" [(ngModel)]="article.title" size="40" pInputText>
       <label for="title-input">Title</label>
     </span>
   </div>
   <div [ngClass]="['ui-g-12']">
     <span class="ui-float-label">
-      <input id="header-input" type="text" [(ngModel)]="article.value.header" size="40" pInputText>
+      <input id="header-input" type="text" [(ngModel)]="article.header" size="40" pInputText>
       <label for="header-input">Header</label>
     </span>
   </div>
   <div [ngClass]="['ui-g-12']">
     <span class="ui-float-label">
-      <input id="header-input" type="text" [(ngModel)]="article.value.tags" size="40" pInputText>
+      <input id="header-input" type="text" [(ngModel)]="article.tags" size="40" pInputText>
       <label for="header-input">Tags</label>
     </span>
   </div>
   <div [ngClass]="['ui-g-12']">
     <span class="ui-float-label">
-      <p-calendar id="date-input" [(ngModel)]="article.value.dateCreated"></p-calendar>
+      <p-calendar id="date-input" [(ngModel)]="article.dateCreated"></p-calendar>
       <label for="date-input">Date Created</label>
     </span>
   </div>
   <div [ngClass]="['ui-g-12']">
     <span class="ui-float-label">
-      <input id="author-input" type="text" [(ngModel)]="article.value.createdBy" size="40" pInputText>
+      <input id="author-input" type="text" [(ngModel)]="article.createdBy" size="40" pInputText>
       <label for="author-input">Created By</label>
     </span>
   </div>
   <div [ngClass]="['ui-g-12']">
     <span class="ui-label">
-      <p-inputSwitch id="author-input" onLabel="Active" offLabel="Inactive" [(ngModel)]="article.value.active"></p-inputSwitch>
+      <p-inputSwitch id="author-input" onLabel="Active" offLabel="Inactive" [(ngModel)]="article.active"></p-inputSwitch>
     </span>
   </div>
   <div [ngClass]="['ui-g-12']">
     <span class="ui-float-label">
-      <input id="body-input" type="text" [(ngModel)]="article.value.content" size="40" pInputText>
+      <input id="body-input" type="text" [(ngModel)]="article.content" size="40" pInputText>
       <label for="body-input">Content</label>
     </span>
   </div>
   <div [ngClass]="['ui-g-12']">
     <span class="ui-float-label">
-      <input id="body-input" type="text" [(ngModel)]="article.value.lastModifiedBy" size="40" [disabled]="true" pInputText>
+      <input id="body-input" type="text" [(ngModel)]="article.lastModifiedBy" size="40" [disabled]="true" pInputText>
       <label for="body-input">Last Modified By</label>
     </span>
   </div>
   <div [ngClass]="['ui-g-12']">
     <span class="ui-float-label">
-      <input id="body-input" type="text" [(ngModel)]="article.value.dateLastModifed" size="40" [disabled]="true" pInputText>
+      <input id="body-input" type="text" [(ngModel)]="article.dateLastModifed" size="40" [disabled]="true" pInputText>
       <label for="body-input">Date Last Modified</label>
     </span>
   </div>
   <div [ngClass]="['ui-g-12']">
     <span class="ui-float-label">
-      <input id="body-input" type="text" [(ngModel)]="article.value.sharedWith" size="40" pInputText>
+      <input id="body-input" type="text" [(ngModel)]="article.sharedWith" size="40" pInputText>
       <label for="body-input">Shared With</label>
     </span>
   </div>
   <div [ngClass]="['ui-g-12']">
     <span class="ui-float-label">
-      <input id="body-input" type="text" [(ngModel)]="article.value.permission" size="40" pInputText>
+      <input id="body-input" type="text" [(ngModel)]="article.permission" size="40" pInputText>
       <label for="body-input">Permission</label>
     </span>
   </div>
   <div [ngClass]="['ui-g-12']">
     <span class="ui-float-label">
-      <input id="author-input" type="text" [(ngModel)]="article.value.author" size="40" pInputText>
+      <input id="author-input" type="text" [(ngModel)]="article.author" size="40" pInputText>
       <label for="author-input">Author</label>
     </span>
   </div>
 
   <div [ngClass]="['ui-g-12']">
     <span class="ui-float-label">
-      <p-calendar id="date-input" [(ngModel)]="article.value.datePublished"></p-calendar>
+      <p-calendar id="date-input" [(ngModel)]="article.datePublished"></p-calendar>
       <label for="date-input">Date Published</label>
+    </span>
+  </div>
+  <div [ngClass]="['ui-g-12']">
+    <span class="ui-label">
+      
+      <label for="attachments">Attachments</label>
+      <div>
+          <p>{{getAttachments()}}</p>
+        </div>
     </span>
   </div>
 

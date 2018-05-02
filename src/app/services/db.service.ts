@@ -57,7 +57,7 @@ export class DbService {
   }
 
   Update(docId: string, doc:any): Promise<any> {
-    return this.httpClient.put(dbUrl + doc.value._id, JSON.stringify(doc.value)).toPromise();
+    return this.httpClient.put(dbUrl + doc._id, JSON.stringify(doc)).toPromise();
   }
 
   GetSession(): Observable<any> {
@@ -73,20 +73,20 @@ export class DbService {
     return this.httpClient.get("/api/couch/_uuids?count=1").toPromise();
   }
 
-  async Upload(event: any[], id: string): Promise<any> {
-    for (let i = 0; i < event["files"].count; i++) {
-      let file = event["files"][i]
+  async Upload(file: any[], id: string): Promise<any> {
+      
       //let url = "/api/couch/jeevehmarket/" + document["_id"] + "/" + file["name"] + "?rev=" + document["_rev"];
       let rev;
-      await this.GetLatestRevById(id).then(data => rev = data);
+      await this.GetLatestRevById(id).then(data => rev = data._rev);
 
       let url = dbUrl + id + "/" + file["name"] + "?rev=" + rev;
       let fileType = file["type"];
       let headers = new HttpHeaders({
         "content-type": fileType
       });
-      this.httpClient.put(url, file, { headers: headers });
-    }
+      return this.httpClient.put(url, file, { headers: headers }).toPromise();
+      
+    
   }
 
   verifyLogin(email:string, password:string):Promise<any>{

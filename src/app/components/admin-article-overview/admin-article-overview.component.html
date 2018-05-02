@@ -20,13 +20,13 @@
     <tbody>
       <tr *ngFor="let article of allArticles; index as i;">
           <td>{{i+1}}</td>
-        <td [ngStyle]="{'background-color': null==article.value.title?'silver':''}">{{article.value.title}}</td>
-        <td [ngStyle]="{'background-color': null==article.value.header?'silver':''}">{{article.value.header}}</td>
-        <td [ngStyle]="{'background-color': null==article.value.content?'silver':''}">{{article.value.content}}</td>
-        <td [ngStyle]="{'background-color': null==article.value.dateCreated?'silver':''}">{{article.value.dateCreated | date:format:"shortDate"}}</td>
-        <td [ngStyle]="{'background-color': null==article.value.publishDate?'silver':''}">{{article.value.publishDate | date:format:"shortDate"}}</td>
-        <td [ngStyle]="{'background-color': null==article.value.createdBy?'silver':''}">{{article.value.createdBy}}</td>
-        <td [ngStyle]="{'background-color': null==article.value.active?'silver':''}">{{article.value.active}}</td>
+        <td [ngStyle]="{'background-color': null==article.title?'silver':''}">{{article.title}}</td>
+        <td [ngStyle]="{'background-color': null==article.header?'silver':''}">{{article.header}}</td>
+        <td [ngStyle]="{'background-color': null==article.content?'silver':''}">{{article.content}}</td>
+        <td [ngStyle]="{'background-color': null==article.dateCreated?'silver':''}">{{article.dateCreated | date:format:"shortDate"}}</td>
+        <td [ngStyle]="{'background-color': null==article.publishDate?'silver':''}">{{article.publishDate | date:format:"shortDate"}}</td>
+        <td [ngStyle]="{'background-color': null==article.createdBy?'silver':''}">{{article.createdBy}}</td>
+        <td [ngStyle]="{'background-color': null==article.active?'silver':''}">{{article.active}}</td>
         <td>
           <div class="row">
             <div class="col-md-4 col-lg-4">
