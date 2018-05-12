@@ -22,8 +22,7 @@
           </div>
           <button [ngClass]="['btn', 'btn-primary']" (click)="login()" *ngIf="!authService.isLoggedIn">
             <span [ngClass]="['fa fa-sign-in']"></span> Login</button>
-          <button [ngClass]="['btn', 'btn-danger']" (click)="logout()" *ngIf="authService.isLoggedIn">
-            <span [ngClass]="['fa fa-sign-out']"></span> Logout</button>
+          
             <p-progressSpinner *ngIf="doSpin" [style]="{width: '25px', height: '25px'}" strokeWidth="5" ></p-progressSpinner>
         </p-panel>
         

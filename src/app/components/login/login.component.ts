@@ -30,8 +30,9 @@ export class LoginComponent {
       if (this.authService.isLoggedIn) {
         // Get the redirect URL from our auth service
         // If no redirect has been set, use the default
-        let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/admin';
+        let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/home';
         this.doSpin=false;
+        this.isLoggedIn = true;
         // Redirect the user
         this.router.navigate([redirect]);
       }
@@ -41,6 +42,13 @@ export class LoginComponent {
   logout() {
     this.authService.logout();
     this.setMessage();
+    if (!this.authService.isLoggedIn) {
+      // Get the redirect URL from our auth service
+      // If no redirect has been set, use the default
+      let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/home';
+      // Redirect the user
+      this.router.navigate([redirect]);
+    }
   }
 
   ngOnInit() {

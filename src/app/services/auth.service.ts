@@ -31,5 +31,8 @@ export class AuthService {
     localStorage.setItem("currentUser", "0");
   }
 
+  signUp(){
+    
+  }
 
 }

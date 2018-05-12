@@ -12,7 +12,7 @@ const dbUrl: string = "/api/couch/jeevehmarket/";
 
 @Injectable()
 export class DbService {
-  currentUser:User;
+  currentUser: User;
 
   constructor(private httpClient: HttpClient) { }
 
@@ -56,7 +56,7 @@ export class DbService {
     return this.httpClient.delete(dbUrl + docId + "?rev=" + revId).toPromise();
   }
 
-  Update(docId: string, doc:any): Promise<any> {
+  Update(docId: string, doc: any): Promise<any> {
     return this.httpClient.put(dbUrl + doc._id, JSON.stringify(doc)).toPromise();
   }
 
@@ -74,31 +74,59 @@ export class DbService {
   }
 
   async Upload(file: any[], id: string): Promise<any> {
-      
-      //let url = "/api/couch/jeevehmarket/" + document["_id"] + "/" + file["name"] + "?rev=" + document["_rev"];
-      let rev;
-      await this.GetLatestRevById(id).then(data => rev = data._rev);
 
-      let url = dbUrl + id + "/" + file["name"] + "?rev=" + rev;
-      let fileType = file["type"];
-      let headers = new HttpHeaders({
-        "content-type": fileType
-      });
-      return this.httpClient.put(url, file, { headers: headers }).toPromise();
-      
-    
+    //let url = "/api/couch/jeevehmarket/" + document["_id"] + "/" + file["name"] + "?rev=" + document["_rev"];
+    let rev;
+    await this.GetLatestRevById(id).then(data => rev = data._rev);
+
+    let url = dbUrl + id + "/" + file["name"] + "?rev=" + rev;
+    let fileType = file["type"];
+    let headers = new HttpHeaders({
+      "content-type": fileType
+    });
+    return this.httpClient.put(url, file, { headers: headers }).toPromise();
+
+
   }
 
-  verifyLogin(email:string, password:string):Promise<any>{
+  verifyLogin(email: string, password: string): Promise<any> {
     let httpParams = new HttpParams()
-    .append("group","true")
-    .append("key",email);
+      .append("group", "true")
+      .append("key", email);
 
-    return this.httpClient.get(dbUrl + "_design/user/_view/login?"+httpParams).toPromise();
+    return this.httpClient.get(dbUrl + "_design/user/_view/login?" + httpParams).toPromise();
   }
 
   GetLatestRevById(id: string): Promise<any> {
     return this.httpClient.get(dbUrl + id).toPromise();
+  }
+
+  newAdmin(username: string, password: string): Promise<any> {
+    let headers = new HttpHeaders({
+      "content-type": "application/json",
+      "Authorization": "Basic " + btoa("admin:1CouchdbeBkhod")
+    });
+    let data = {
+      "admins": { 
+        "names": [],
+         "roles": [] 
+      }, 
+      "members": {
+         "names": ["jan"], 
+         "roles": [] 
+        }
+    }
+    return this.httpClient.put(dbUrl + "jeevehmarket/_security", data, { headers: headers }).toPromise();
+  }
+
+  createNewUser(name, password): Promise<any>{
+    let headers = new HttpHeaders({
+      "content-type": "application/json",
+      "Authorization": "Basic " + btoa("admin:1CouchdbeBkhod")
+    });
+    let data = {"name": name, "password": password, "roles": ["jeevehmarket_user"], "type": "user"};
+
+    return this.httpClient.put(dbUrl + "_users/org.couchdb.user:"+ name, data,{ headers: headers }).toPromise();
   }
 
 }
