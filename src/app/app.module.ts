@@ -65,6 +65,7 @@ import { AdminArticleEditComponent } from './components/admin-article-edit/admin
 import { LoginSigninComponent } from './components/login-signin/login-signin.component';
 import { LoginSignoutComponent } from './components/login-signout/login-signout.component';
 import { MenuTopnavComponent } from './components/menu-topnav/menu-topnav.component';
+import { LoginSignupComponent } from './components/login-signup/login-signup.component';
 //import {MenuItem} from 'primeng/api';
 
 
@@ -94,7 +95,8 @@ import { MenuTopnavComponent } from './components/menu-topnav/menu-topnav.compon
     AdminArticleEditComponent,
     LoginSigninComponent,
     LoginSignoutComponent,
-    MenuTopnavComponent
+    MenuTopnavComponent,
+    LoginSignupComponent
   ],
   imports: [
     BrowserModule,

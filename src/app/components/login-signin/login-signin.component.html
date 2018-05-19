@@ -2,32 +2,34 @@
   login-signin works!
 </p>
 <div>
-  <div [ngClass]="['']">
-    <div [ngClass]="['ui-g']">
-      <div [ngClass]="['ui-g-12 ui-md-4 ui-md-offset-4 ']">
-        <p-panel header="Login">
-          <p>{{message}}</p>
-          <p-messages [(value)]="msgs"></p-messages>
-          <div [ngClass]="['ui-g-12']">
-            <span class="ui-float-label">
-              <input type="text" [ngClass]="['form-control']" *ngIf="!authService.isLoggedIn" [(ngModel)]="email" pInputText>
-              <label for="firstName-input">Email</label>
-            </span>
-          </div>
-          <div [ngClass]="['ui-g-12']">
-            <span class="ui-float-label">
-              <input type="password" [ngClass]="['form-control']" *ngIf="!authService.isLoggedIn" [(ngModel)]="password" pInputText>
-              <label for="firstName-input">Password</label>
-            </span>
-          </div>
-          <button [ngClass]="['btn', 'btn-primary']" (click)="login()" *ngIf="!authService.isLoggedIn">
-            <span [ngClass]="['fa fa-sign-in']"></span> Login</button>
-          
-            <p-progressSpinner *ngIf="doSpin" [style]="{width: '25px', height: '25px'}" strokeWidth="5" ></p-progressSpinner>
-        </p-panel>
-        
+  <form (ngSubmit)="onSubmit()" #signupForm="ngForm">
+    <div [ngClass]="['']">
+      <div [ngClass]="['ui-g']">
+        <div [ngClass]="['ui-g-12 ui-md-4 ui-md-offset-4 ']">
+          <p-panel header="Login">
+            <p>{{message}}</p>
+            <p-messages [(value)]="msgs"></p-messages>
+            <div [ngClass]="['ui-g-12']">
+              <span class="ui-float-label">
+                <input type="text" [ngClass]="['form-control']"  [(ngModel)]="email" name="email" pInputText>
+                <label for="firstName-input">Email</label>
+              </span>
+            </div>
+            <div [ngClass]="['ui-g-12']">
+              <span class="ui-float-label">
+                <input type="password" [ngClass]="['form-control']"  [(ngModel)]="password" name="password" pInputText>
+                <label for="firstName-input">Password</label>
+              </span>
+            </div>
+            <button [ngClass]="['btn', 'btn-primary']" type="submit">Login</button>
+
+            <p-progressSpinner *ngIf="doSpin" [style]="{width: '25px', height: '25px'}" strokeWidth="5"></p-progressSpinner>
+            <a routerLink="/signup" routerLinkActive="active"> Sign Up!</a>
+          </p-panel>
+
+        </div>
+
       </div>
-  
     </div>
-  </div>
+  </form>
 </div>

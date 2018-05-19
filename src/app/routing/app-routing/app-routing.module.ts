@@ -22,9 +22,15 @@ import { AdminMainComponent } from '../../components/admin-main/admin-main.compo
 import { AdminArticlesComponent } from '../../components/admin-articles/admin-articles.component';
 import { AdminUsersComponent } from '../../components/admin-users/admin-users.component';
 import { AdminSettingsComponent } from '../../components/admin-settings/admin-settings.component';
+import { LoginSignupComponent } from '../../components/login-signup/login-signup.component';
 
 const appRoutes: Routes = [
-  { path: 'login', component: LoginComponent },
+  {
+    path: 'signup', component: LoginSignupComponent
+  },
+  {
+    path: 'login', component: LoginComponent
+  },
   {
     path: 'homepage',
     component: HomeMasterComponent,

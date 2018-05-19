@@ -122,11 +122,25 @@ export class DbService {
   createNewUser(name, password): Promise<any>{
     let headers = new HttpHeaders({
       "content-type": "application/json",
+      "accept":"application/json",
       "Authorization": "Basic " + btoa("admin:1CouchdbeBkhod")
     });
     let data = {"name": name, "password": password, "roles": ["jeevehmarket_user"], "type": "user"};
 
-    return this.httpClient.put(dbUrl + "_users/org.couchdb.user:"+ name, data,{ headers: headers }).toPromise();
+    return this.httpClient.put("/api/couch/_users/org.couchdb.user:"+ name, data,{ headers: headers }).toPromise();
+  }
+
+  // see: http://docs.couchdb.org/en/2.0.0/api/server/authn.html#api-auth-cookie
+  login(username:string, password:string):Promise<any>{
+    let headers = new HttpHeaders({
+      "content-type": "application/json"//,
+      //"Authorization": "Basic " + btoa("admin:1CouchdbeBkhod")
+    });
+    let data = {
+      name:username,
+      password:password
+    }
+    return this.httpClient.post("/api/couch/_session", data, {headers:headers}).toPromise();
   }
 
 }
