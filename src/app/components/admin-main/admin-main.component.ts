@@ -1,11 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ArticleComponent } from '../article/article.component';
+import { ArticleThumbnailComponent } from '../article-thumbnail/article-thumbnail.component';
 import { FormsModule } from '@angular/forms';
 
 import { User } from '../../models/User';
 import {DbService} from '../../services/db.service';
 
-import { ArticleModel } from '../article/article-model';
+import { ArticleModel } from '../article-thumbnail/article-model';
 
 @Component({
   selector: 'app-admin-main',

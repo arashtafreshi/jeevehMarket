@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ArticleComponent } from '../article/article.component';
+import { ArticleThumbnailComponent } from '../article-thumbnail/article-thumbnail.component';
 import { FormsModule } from '@angular/forms';
 import { dbArticle } from '../../models/dbArticle';
 

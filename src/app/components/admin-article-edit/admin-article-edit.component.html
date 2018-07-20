@@ -62,6 +62,12 @@
   </div>
   <div [ngClass]="['ui-g-12']">
     <span class="ui-float-label">
+      <input id="price-input" type="number" [(ngModel)]="article.price" size="40" pInputText>
+      <label for="price-input">Price</label>
+    </span>
+  </div>
+  <div [ngClass]="['ui-g-12']">
+    <span class="ui-float-label">
       <input id="body-input" type="text" [(ngModel)]="article.content" size="40" pInputText>
       <label for="body-input">Content</label>
     </span>
@@ -105,11 +111,11 @@
   </div>
   <div [ngClass]="['ui-g-12']">
     <span class="ui-label">
-      
+
       <label for="attachments">Attachments</label>
       <div>
-          <p>{{getAttachments()}}</p>
-        </div>
+        <p>{{getAttachments()}}</p>
+      </div>
     </span>
   </div>
 
@@ -120,8 +126,12 @@
     </span>
   </div>-->
   <div [ngClass]="['ui-g-12']">
+      <p-fileUpload customUpload="true" id="profilepic" name="profilepic" url="/api/couch/jeevehmarket/" accept="image/*" maxFileSize="5000000"
+        showUploadButton=true (uploadHandler)="myUploader($event,true)"></p-fileUpload>
+    </div>
+  <div [ngClass]="['ui-g-12']">
     <p-fileUpload customUpload="true" id="file" name="file" url="/api/couch/jeevehmarket/" accept="image/*" maxFileSize="5000000"
-      showUploadButton=true (uploadHandler)="myUploader($event)"></p-fileUpload>
+      showUploadButton=true (uploadHandler)="myUploader($event,false)"></p-fileUpload>
   </div>
   <!--<div [ngClass]="['ui-g-12']">
     <p-editor [(ngModel)]="article.content" [style]="{'height':'520px'}"></p-editor>

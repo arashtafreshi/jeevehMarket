@@ -2,73 +2,14 @@
   admin-users works!
 </p>
 
-<div>
-  <div class="ui-g">
-    <div [ngClass]="['ui-g-12']">
-      <span class="ui-float-label">
-        <input id="firstName-input" type="text" [(ngModel)]="user.firstName" size="40" pInputText>
-        <label for="firstName-input">First Name</label>
-      </span>
-    </div>
-    <div [ngClass]="['ui-g-12']">
-      <span class="ui-float-label">
-        <input id="lastName-input" type="text" [(ngModel)]="user.lastName" size="40" pInputText>
-        <label for="lastName-input">Last Name</label>
-      </span>
-    </div>
-    <div [ngClass]="['ui-g-12']">
-      <span class="ui-float-label">
-        <input id="email-input" type="text" [(ngModel)]="user.email" size="40" pInputText>
-        <label for="email-input">Email</label>
-      </span>
-    </div>
-    <p-button (click)="addUser()" label="Add User"></p-button>
-  </div>
-
-  <table [ngClass]="['table table-condensed table-stripped table-hover table-bordered']">
-      <thead>
-        <tr>
-          <th></th>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Email</th>
-          <th>Middle Name</th>
-          <th>Gender</th>
-          <th>Role</th>
-          <th>Phone</th>
-          <th>Birthday</th>
-          <th>Active</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let user of allUsers; index as i;">
-            <td>{{i+1}}</td>
-          <td [ngStyle]="{'background-color': null==user.value.firstName?'silver':''}">{{user.value.firstName}}</td>
-          <td [ngStyle]="{'background-color': null==user.value.lastName?'silver':''}">{{user.value.lastName}}</td>
-          <td [ngStyle]="{'background-color': null==user.value.email?'silver':''}">{{user.value.email}}</td>
-          <td [ngStyle]="{'background-color': null==user.value.middleName?'silver':''}">{{user.value.middleName}}</td>
-          <td [ngStyle]="{'background-color': null==user.value.gender?'silver':''}">{{user.value.gender}}</td>
-          <td [ngStyle]="{'background-color': null==user.value.role?'silver':''}">{{user.value.role}}</td>
-          <td [ngStyle]="{'background-color': null==user.value.phone?'silver':''}">{{user.value.phone}}</td>
-          <td [ngStyle]="{'background-color': null==user.value.birthDate?'silver':''}">{{user.value.birthDate | date:format:"shortDate"}}</td>
-          <td>
-            <div class="row">
-              <div class="col-md-4 col-lg-4">
-                <button [ngClass]="['btn btn-default']" (click)="alert(user.id)">
-                  <i [ngClass]="['fa fa-edit']"></i>
-                </button>
-              </div>
-              <div class="col-md-4 col-lg-4">
-                <button [ngClass]="['btn btn-danger']" (click)="deleteUser(user.id)">
-                  <i [ngClass]="['fa fa-trash']"></i>
-                </button>
-              </div>
-            </div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-
-
- 
-</div>
+<p-tabView>
+  <p-tabPanel header="Overview">
+    <app-admin-user-overview (onUserEdit)="onUserEdit($event)"></app-admin-user-overview>
+  </p-tabPanel>
+  <p-tabPanel header="Add User">
+    <app-admin-user-new></app-admin-user-new>
+  </p-tabPanel>
+  <p-tabPanel header="Edit">
+    <app-admin-user-edit [user]="user"></app-admin-user-edit>
+  </p-tabPanel>
+</p-tabView>

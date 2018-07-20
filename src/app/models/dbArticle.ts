@@ -18,6 +18,8 @@ export class dbArticle {
     author: string;
     datePublished: Date;
     _attachments:any;
+    price:number;
+    profilePicture:string;
 
     constructor() {
         this._id = null;
@@ -36,5 +38,7 @@ export class dbArticle {
         this.permission = [];
         this.author = null;
         this.datePublished = null;
+        this.price = null;
+        this.profilePicture = null;
     }
 }

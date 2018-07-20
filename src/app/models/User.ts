@@ -21,6 +21,8 @@ export class User {
         country: String,
         zipcode: String
     };
+    profilePicture: string;
+    _attachments:any;
 
     constructor() {
         this.firstName = "";
@@ -42,5 +44,6 @@ export class User {
             country: "",
             zipcode: ""
         };
+        this.profilePicture = null;
     }
 }

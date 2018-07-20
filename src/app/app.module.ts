@@ -14,7 +14,7 @@ import { Link2Component } from './components/link2/link2.component';
 import { Link3Component } from './components/link3/link3.component';
 
 import { CategoryItemComponent } from './components/category-item/category-item.component';
-import { ArticleComponent } from './components/article/article.component';
+import { ArticleThumbnailComponent } from './components/article-thumbnail/article-thumbnail.component';
 import { AddNewArticleComponent } from './components/add-new-article/add-new-article.component';
 import { ROUTES } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
@@ -50,6 +50,7 @@ import { StepsModule } from 'primeng/steps';
 import { PanelMenuModule } from 'primeng/panelmenu';
 import { MenuModule } from 'primeng/menu';
 import { InputSwitchModule } from 'primeng/inputswitch';
+import { CarouselModule } from 'primeng/carousel';
 
 
 
@@ -66,6 +67,10 @@ import { LoginSigninComponent } from './components/login-signin/login-signin.com
 import { LoginSignoutComponent } from './components/login-signout/login-signout.component';
 import { MenuTopnavComponent } from './components/menu-topnav/menu-topnav.component';
 import { LoginSignupComponent } from './components/login-signup/login-signup.component';
+import { ArticleFullComponent } from './components/article-full/article-full.component';
+import { AdminUserEditComponent } from './components/admin-user-edit/admin-user-edit.component';
+import { AdminUserNewComponent } from './components/admin-user-new/admin-user-new.component';
+import { AdminUserOverviewComponent } from './components/admin-user-overview/admin-user-overview.component';
 //import {MenuItem} from 'primeng/api';
 
 
@@ -74,7 +79,7 @@ import { LoginSignupComponent } from './components/login-signup/login-signup.com
     AppComponent,
     HomeMasterComponent,
     CategoryItemComponent,
-    ArticleComponent,
+    ArticleThumbnailComponent,
     AddNewArticleComponent,
     LoginComponent,
     PageNotFoundComponent,
@@ -96,7 +101,11 @@ import { LoginSignupComponent } from './components/login-signup/login-signup.com
     LoginSigninComponent,
     LoginSignoutComponent,
     MenuTopnavComponent,
-    LoginSignupComponent
+    LoginSignupComponent,
+    ArticleFullComponent,
+    AdminUserEditComponent,
+    AdminUserNewComponent,
+    AdminUserOverviewComponent
   ],
   imports: [
     BrowserModule,
@@ -126,6 +135,7 @@ import { LoginSignupComponent } from './components/login-signup/login-signup.com
     PanelMenuModule,
     MenuModule,
     InputSwitchModule,
+    CarouselModule,
     AppRoutingModule
   ],
   providers: [AuthService, AuthGuardService],

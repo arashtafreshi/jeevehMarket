@@ -1,29 +1,28 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { dbArticle } from '../../models/dbArticle';
+import { User } from '../../models/User';
 import { DbService } from '../../services/db.service';
 
 @Component({
-  selector: 'app-admin-article-edit',
-  templateUrl: './admin-article-edit.component.html',
-  styleUrls: ['./admin-article-edit.component.css'],
-  providers: [DbService]
+  selector: 'app-admin-user-edit',
+  templateUrl: './admin-user-edit.component.html',
+  styleUrls: ['./admin-user-edit.component.css'],
+  providers:[DbService]
 })
-export class AdminArticleEditComponent implements OnInit {
-  @Input() article: dbArticle;
+export class AdminUserEditComponent implements OnInit {
+  @Input() user: User;
   isUpdating: boolean = false;
   attachments: string[] = [];
 
   constructor(private db: DbService) { }
 
   ngOnInit() {
-    //this.article = new dbArticle();
   }
 
   getAttachments() {
     let keys: string[] = [];
-    if (this.article._attachments) {
-      for (let key in this.article._attachments) {
-        if (this.article._attachments[key].length) {
+    if (this.user._attachments) {
+      for (let key in this.user._attachments) {
+        if (this.user._attachments[key].length) {
           keys.push(key);
           console.log(keys);
         }
@@ -34,9 +33,9 @@ export class AdminArticleEditComponent implements OnInit {
     return keys;
   }
 
-  updateArticle() {
+  updateUser() {
     this.isUpdating = true;
-    this.db.Update(this.article._id, this.article).then(
+    this.db.Update(this.user._id, this.user).then(
       data => {
         console.log("Document updated.");
         this.isUpdating = false;
@@ -52,14 +51,14 @@ export class AdminArticleEditComponent implements OnInit {
     let that = this;
     event["files"].forEach(file => {
       console.log(file);
-      this.db.Upload(file, this.article._id).then(
+      this.db.Upload(file, this.user._id).then(
         data => {
           console.log(data);
-          this.db.GetDocumentById(that.article._id).subscribe(function(data){
-            that.article = data;
+          this.db.GetUserById(that.user._id).subscribe(function(data){
+            that.user = data;
             if (isProfilePic) {
-              that.article.profilePicture = file.name;
-              that.db.Update(that.article._id, that.article).then(
+              that.user.profilePicture = file.name;
+              that.db.Update(that.user._id, that.user).then(
                 data => {
                   console.log("Document updated.");
                   that.isUpdating = false;
@@ -76,4 +75,5 @@ export class AdminArticleEditComponent implements OnInit {
       );
     });
   }
+
 }

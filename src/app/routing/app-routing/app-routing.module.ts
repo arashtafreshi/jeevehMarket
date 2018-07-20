@@ -24,6 +24,9 @@ import { AdminUsersComponent } from '../../components/admin-users/admin-users.co
 import { AdminSettingsComponent } from '../../components/admin-settings/admin-settings.component';
 import { LoginSignupComponent } from '../../components/login-signup/login-signup.component';
 
+// Article
+import { ArticleFullComponent } from '../../components/article-full/article-full.component';
+
 const appRoutes: Routes = [
   {
     path: 'signup', component: LoginSignupComponent
@@ -74,6 +77,10 @@ const appRoutes: Routes = [
   {
     path: 'UploadFileComponent',
     component: UploadFileComponent
+  },
+  {
+    path: 'article/:id',
+    component: ArticleFullComponent
   },
   {
     path: '',

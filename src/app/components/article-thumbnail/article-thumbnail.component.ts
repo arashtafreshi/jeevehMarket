@@ -5,12 +5,12 @@ import { MenuItem } from 'primeng/api';
 import { dbArticle } from '../../models/dbArticle';
 
 @Component({
-    selector: 'app-article',
-    templateUrl: './article.component.html',
-    styleUrls: ['./article.component.css'],
+    selector: 'app-article-thumbnail',
+    templateUrl: './article-thumbnail.component.html',
+    styleUrls: ['./article-thumbnail.component.css'],
     providers: []
 })
-export class ArticleComponent implements OnInit {
+export class ArticleThumbnailComponent implements OnInit {
     @Input() article: dbArticle;
     image: string = "/api/couch/jeevehmarket/";
 

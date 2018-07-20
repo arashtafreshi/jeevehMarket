@@ -20,6 +20,10 @@ export class DbService {
     return this.httpClient.get<dbArticle>("/api/couch/jeevehmarket/" + docId);
   }
 
+  GetUserById(docId: string): Observable<User> {
+    return this.httpClient.get<User>("/api/couch/jeevehmarket/" + docId);
+  }
+
   GetAllArticles(): Observable<any> {
     return this.httpClient.get(dbUrl + "_design/article/_view/all");
   }
@@ -57,7 +61,10 @@ export class DbService {
   }
 
   Update(docId: string, doc: any): Promise<any> {
-    return this.httpClient.put(dbUrl + doc._id, JSON.stringify(doc)).toPromise();
+    let url = dbUrl + doc._id;
+    //delete doc['_attachments'];
+    //delete doc['_id'];
+    return this.httpClient.put(url, JSON.stringify(doc)).toPromise();
   }
 
   GetSession(): Observable<any> {

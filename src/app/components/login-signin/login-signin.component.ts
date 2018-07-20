@@ -33,7 +33,7 @@ export class LoginSigninComponent implements OnInit {
   login() {
     this.message = 'Trying to log in ...';
     this.doSpin= true;
-    this.authService.login().subscribe(() => {
+    this.authService.login().subscribe((data) => {
       this.setMessage();
       if (this.authService.isLoggedIn) {
         // Get the redirect URL from our auth service
@@ -48,7 +48,22 @@ export class LoginSigninComponent implements OnInit {
 
   onSubmit(){
     this.db.login(this.email, this.password).then(
-      data=>{console.log(data)},
+      data=>{
+        console.log(data);
+
+        if (data.ok) {
+          localStorage.setItem("currentUser", "1");
+          this.authService.isLoggedIn = true;
+          localStorage.setItem("isLoggedIn","true");
+          localStorage.setItem("roles",data["roles"]);
+          // Get the redirect URL from our auth service
+          // If no redirect has been set, use the default
+          let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/admin';
+          this.doSpin=false;
+          // Redirect the user
+          this.router.navigate([redirect]);
+        }
+      },
       err=>{console.log(err)}
     );
   }

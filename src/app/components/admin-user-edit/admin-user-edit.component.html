@@ -1,0 +1,104 @@
+<p>
+  admin-user-edit works!
+</p>
+
+
+<h3 class="first">Article</h3>
+
+<div class="ui-g">
+  <div [ngClass]="['ui-g-12']">
+    <span class="ui-float-label">
+      <input id="title-input" type="text" [(ngModel)]="user._id" size="40" [disabled]="true" pInputText>
+      <label for="title-input">ID</label>
+    </span>
+  </div>
+  <div [ngClass]="['ui-g-12']">
+    <span class="ui-float-label">
+      <input id="title-input" type="text" [(ngModel)]="user._rev" size="40" [disabled]="true" pInputText>
+      <label for="title-input">Rev.</label>
+    </span>
+  </div>
+  <div [ngClass]="['ui-g-12']">
+    <span class="ui-float-label">
+      <input id="title-input" type="text" [(ngModel)]="user.type" size="40" [disabled]="true" pInputText>
+      <label for="title-input">Type</label>
+    </span>
+  </div>
+  <div [ngClass]="['ui-g-12']">
+    <span class="ui-float-label">
+      <input id="firstName-input" type="text" [(ngModel)]="user.firstName" size="40" pInputText>
+      <label for="firstName-input">First Name</label>
+    </span>
+  </div>
+  <div [ngClass]="['ui-g-12']">
+    <span class="ui-float-label">
+      <input id="middleName-input" type="text" [(ngModel)]="user.middleName" size="40" pInputText>
+      <label for="middleName-input">Middle Name</label>
+    </span>
+  </div>
+  <div [ngClass]="['ui-g-12']">
+    <span class="ui-float-label">
+      <input id="lastName-input" type="text" [(ngModel)]="user.lastName" size="40" pInputText>
+      <label for="lastName-input">Last Name</label>
+    </span>
+  </div>
+  <div [ngClass]="['ui-g-12']">
+    <span class="ui-float-label">
+      <p-calendar id="email-input" [(ngModel)]="user.email"></p-calendar>
+      <label for="email-input">Email</label>
+    </span>
+  </div>
+  <div [ngClass]="['ui-g-12']">
+    <span class="ui-label">
+      <p-inputSwitch id="author-input" onLabel="Active" offLabel="Inactive" [(ngModel)]="user.active"></p-inputSwitch>
+    </span>
+  </div>
+  <div [ngClass]="['ui-g-12']">
+    <span class="ui-float-label">
+      <input id="gender-input" type="text" [(ngModel)]="user.gender" size="40" pInputText>
+      <label for="gender-input">Gender</label>
+    </span>
+  </div>
+  <div [ngClass]="['ui-g-12']">
+    <span class="ui-float-label">
+      <input id="phone-input" type="tel" [(ngModel)]="user.phone" size="40" [disabled]="true" pInputText>
+      <label for="phone-input">phone</label>
+    </span>
+  </div>
+  <div [ngClass]="['ui-g-12']">
+    <span class="ui-float-label">
+      <input id="birthDate-input" type="text" [(ngModel)]="user.birthDate" size="40" [disabled]="true" pInputText>
+      <label for="birthDate-input">DOB</label>
+    </span>
+  </div>
+  <div [ngClass]="['ui-g-12']">
+    <span class="ui-label">
+
+      <label for="attachments">Attachments</label>
+      <div>
+        <p>{{getAttachments()}}</p>
+      </div>
+    </span>
+  </div>
+
+  <!--<div [ngClass]="['ui-g-12']">
+    <span class="ui-float-label">
+      <input id="image-input" type="text" [(ngModel)]="user.image" size="40" pInputText>
+      <label for="image-input">Image</label>
+    </span>
+  </div>-->
+  <div [ngClass]="['ui-g-12']">
+      <p-fileUpload customUpload="true" id="profilepic" name="profilepic" url="/api/couch/jeevehmarket/" accept="image/*" maxFileSize="5000000"
+        showUploadButton=true (uploadHandler)="myUploader($event,true)"></p-fileUpload>
+    </div>
+  <div [ngClass]="['ui-g-12']">
+    <p-fileUpload customUpload="true" id="file" name="file" url="/api/couch/jeevehmarket/" accept="image/*" maxFileSize="5000000"
+      showUploadButton=true (uploadHandler)="myUploader($event,false)"></p-fileUpload>
+  </div>
+  <!--<div [ngClass]="['ui-g-12']">
+    <p-editor [(ngModel)]="user.content" [style]="{'height':'520px'}"></p-editor>
+  </div>
+-->
+  <p-button label="Save Changes" (click)="updateUser()"></p-button>
+  <p-progressSpinner *ngIf="isUpdating"></p-progressSpinner>
+</div>

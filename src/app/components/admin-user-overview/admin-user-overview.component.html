@@ -1,0 +1,48 @@
+<p>
+  admin-user-overview works!
+</p>
+
+
+<table [ngClass]="['table table-condensed table-stripped table-hover table-bordered']">
+  <thead>
+    <tr>
+      <th></th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Email</th>
+      <th>Middle Name</th>
+      <th>Gender</th>
+      <th>Role</th>
+      <th>Phone</th>
+      <th>Birthday</th>
+      <th>Active</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of allUsers; index as i;">
+        <td>{{i+1}}</td>
+      <td [ngStyle]="{'background-color': null==user.value.firstName?'silver':''}">{{user.value.firstName}}</td>
+      <td [ngStyle]="{'background-color': null==user.value.lastName?'silver':''}">{{user.value.lastName}}</td>
+      <td [ngStyle]="{'background-color': null==user.value.email?'silver':''}">{{user.value.email}}</td>
+      <td [ngStyle]="{'background-color': null==user.value.middleName?'silver':''}">{{user.value.middleName}}</td>
+      <td [ngStyle]="{'background-color': null==user.value.gender?'silver':''}">{{user.value.gender}}</td>
+      <td [ngStyle]="{'background-color': null==user.value.role?'silver':''}">{{user.value.role}}</td>
+      <td [ngStyle]="{'background-color': null==user.value.phone?'silver':''}">{{user.value.phone}}</td>
+      <td [ngStyle]="{'background-color': null==user.value.birthDate?'silver':''}">{{user.value.birthDate | date:format:"shortDate"}}</td>
+      <td>
+        <div class="row">
+          <div class="col-md-4 col-lg-4">
+            <button [ngClass]="['btn btn-default']" (click)="editUser(user.value)">
+              <i [ngClass]="['fa fa-edit']"></i>
+            </button>
+          </div>
+          <div class="col-md-4 col-lg-4">
+            <button [ngClass]="['btn btn-danger']" (click)="deleteUser(user.id)">
+              <i [ngClass]="['fa fa-trash']"></i>
+            </button>
+          </div>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

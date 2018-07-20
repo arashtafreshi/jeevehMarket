@@ -1,4 +1,4 @@
-<div>
+<!--<div>
   <ul>
     <li  class="cat-item">
       <a routerLink="/admin" routerLinkActive="active"> <div class="cat-item-detail">Admin</div></a>
@@ -7,6 +7,20 @@
       <a href="#"><div class="cat-item-detail">{{item}}</div></a>
     </li>
   </ul>
+</div>
+-->
+
+<div>
+  <div [ngClass]="['ui-g']">
+    <div [ngClass]="['ui-g-1 ui-sm-4']">
+        <a routerLink="/admin" routerLinkActive="active"> <div class="cat-item-detail">Admin</div></a>
+    </div>
+    <div [ngClass]="['ui-g-1 ui-sm-4']" *ngFor="let item of items">
+      <a href="#">
+        <div class="cat-item-detail">{{item}}</div>
+      </a>
+    </div>
+  </div>
 </div>
 
 <router-outlet></router-outlet>

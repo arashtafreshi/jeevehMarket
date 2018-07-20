@@ -18,6 +18,7 @@ export class LoginSignoutComponent implements OnInit {
 
   logout() {
     this.authService.logout();
+    localStorage.removeItem("isLoggedIn");
     this.setMessage();
   }
 

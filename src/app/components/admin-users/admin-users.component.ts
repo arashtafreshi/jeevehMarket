@@ -49,5 +49,10 @@ export class AdminUsersComponent implements OnInit {
     );
   }
 
+  onUserEdit(inputUser: User) {
+    this.user = inputUser;
+    console.log(this.user);
+  }
+
 
 }

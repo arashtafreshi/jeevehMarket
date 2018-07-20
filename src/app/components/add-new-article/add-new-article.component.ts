@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter, OnChanges, SimpleChange } from '@angular/core';
-import { ArticleModel } from '../article/article-model';
+import { ArticleModel } from '../article-thumbnail/article-model';
 import { NgForm } from '@angular/forms';
 import { dbArticle } from '../../models/dbArticle';
 import { DbService } from '../../services/db.service';

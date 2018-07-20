@@ -1,0 +1,26 @@
+<p>
+  admin-user-new works!
+</p>
+
+
+<div class="ui-g">
+  <div [ngClass]="['ui-g-12']">
+    <span class="ui-float-label">
+      <input id="firstName-input" type="text" [(ngModel)]="user.firstName" size="40" pInputText>
+      <label for="firstName-input">First Name</label>
+    </span>
+  </div>
+  <div [ngClass]="['ui-g-12']">
+    <span class="ui-float-label">
+      <input id="lastName-input" type="text" [(ngModel)]="user.lastName" size="40" pInputText>
+      <label for="lastName-input">Last Name</label>
+    </span>
+  </div>
+  <div [ngClass]="['ui-g-12']">
+    <span class="ui-float-label">
+      <input id="email-input" type="text" [(ngModel)]="user.email" size="40" pInputText>
+      <label for="email-input">Email</label>
+    </span>
+  </div>
+  <p-button (click)="addUser()" label="Add User"></p-button>
+</div>

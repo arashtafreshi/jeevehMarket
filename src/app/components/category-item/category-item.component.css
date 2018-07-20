@@ -14,18 +14,18 @@ ul{
     padding-top: 20px;
     padding-bottom: 20px;
     font-family: 'Anton', sans-serif;
+    text-align: center
 }
 
 .cat-item-detail:hover{
     background-color: lightgray;
-    font-weight:bold;
 }
 
 a{
-    color: white;
+    color: orangered;
 }
 
 a:hover{
     text-decoration: none;
-    color: black;
+    color: orangered;
 }
