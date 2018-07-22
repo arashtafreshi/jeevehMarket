@@ -3,11 +3,16 @@
 </p>
 <div [ngClass]="['container']">
   <h1>{{article.title}}</h1>
+  <div  style="max-height: 400px">
+      <img  src="/api/couch/jeevehmarket/{{article._id}}/{{attachments[0]}}" style="max-height: inherit">
+  </div>
+  <!--
   <p-carousel [value]="attachments" numVisible="1">
     <ng-template let-item pTemplate="item">
-      <img  src="/api/couch/jeevehmarket/{{article._id}}/{{item}}" style="max-height: 400px">
+      
     </ng-template>
   </p-carousel>
+  -->
   <div [ngClass]="['profilepic']">
       <img *ngIf="article.profilePicture" src="/api/couch/jeevehmarket/{{article._id}}/{{article.profilePicture}}">
       <img *ngIf="!article.profilePicture" src="https://i.stack.imgur.com/34AD2.jpg">

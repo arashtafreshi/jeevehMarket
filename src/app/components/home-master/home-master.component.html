@@ -17,10 +17,10 @@
 </div>
 -->
 
-<div>
+<div [ngClass]="['container']">
   <app-category-item></app-category-item>
   <div class=" ui-g">
-    <div class="ui-sm-12 ui-md-4 ui-lg-2" *ngFor="let article of articles">
+    <div [ngClass]="{'ui-lg-6':(i===0)}" class="ui-sm-12 ui-md-4 ui-lg-3" *ngFor="let article of articles; let i = index">
       <app-article-thumbnail [article]="article.value"></app-article-thumbnail>
     </div>
   </div>

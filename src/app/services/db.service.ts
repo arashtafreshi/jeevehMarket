@@ -126,6 +126,9 @@ export class DbService {
     return this.httpClient.put(dbUrl + "jeevehmarket/_security", data, { headers: headers }).toPromise();
   }
 
+
+  //curl -X PUT http://admin:1CouchdbeBkhod@localhost:5984/_users/org.couchdb.user:a@b.com  -H "Accept: application/json"  -H "Content-Type: application/json"  -d '{"name": "a@b.com", "password": "1234", "roles": ["jeevehmarket_user"], "type": "user"}'
+
   createNewUser(name, password): Promise<any>{
     let headers = new HttpHeaders({
       "content-type": "application/json",

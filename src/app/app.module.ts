@@ -71,6 +71,7 @@ import { ArticleFullComponent } from './components/article-full/article-full.com
 import { AdminUserEditComponent } from './components/admin-user-edit/admin-user-edit.component';
 import { AdminUserNewComponent } from './components/admin-user-new/admin-user-new.component';
 import { AdminUserOverviewComponent } from './components/admin-user-overview/admin-user-overview.component';
+import { ArticleHeadlineComponent } from './components/article-headline/article-headline.component';
 //import {MenuItem} from 'primeng/api';
 
 
@@ -105,7 +106,8 @@ import { AdminUserOverviewComponent } from './components/admin-user-overview/adm
     ArticleFullComponent,
     AdminUserEditComponent,
     AdminUserNewComponent,
-    AdminUserOverviewComponent
+    AdminUserOverviewComponent,
+    ArticleHeadlineComponent
   ],
   imports: [
     BrowserModule,

@@ -10,21 +10,33 @@
             <p>{{message}}</p>
             <p-messages [(value)]="msgs"></p-messages>
             <div [ngClass]="['ui-g-12']">
+                <span class="ui-float-label">
+                  <input type="text" [ngClass]="['form-control']" [(ngModel)]="newUser.firstName" name="firstName" required pInputText>
+                  <label for="firstName-input">First Name *</label>
+                </span>
+              </div>
+              <div [ngClass]="['ui-g-12']">
+                  <span class="ui-float-label">
+                    <input type="text" [ngClass]="['form-control']" [(ngModel)]="newUser.lastName" name="lastName" required pInputText>
+                    <label for="lastName-input">Last Name *</label>
+                  </span>
+                </div>
+            <div [ngClass]="['ui-g-12']">
               <span class="ui-float-label">
-                <input type="text" [ngClass]="['form-control']" [(ngModel)]="email" name="email" required pInputText>
-                <label for="email-input">Email</label>
+                <input type="text" [ngClass]="['form-control']" [(ngModel)]="newUser.email" name="email" required pInputText>
+                <label for="email-input">Email *</label>
               </span>
             </div>
             <div [ngClass]="['ui-g-12']">
               <span class="ui-float-label">
-                <input type="password" [ngClass]="['form-control']" [(ngModel)]="password" name="password" required pInputText>
-                <label for="password-input">Password</label>
+                <input type="password" [ngClass]="['form-control']" [(ngModel)]="newUser.password" name="password" required pInputText>
+                <label for="password-input">Password *</label>
               </span>
             </div>
             <div [ngClass]="['ui-g-12']">
               <span class="ui-float-label">
                 <input type="password" [ngClass]="['form-control']" [(ngModel)]="repassword" name="repassword" required pInputText>
-                <label for="repassword-input">re-Password</label>
+                <label for="repassword-input">Re-Password *</label>
               </span>
             </div>
             <button [ngClass]="['btn', 'btn-primary']" type="submit">Sign Up</button>
