@@ -26,7 +26,7 @@ export class User {
 
     constructor() {
         this.firstName = "";
-        this.middleName = "";
+        this.middleName = null;
         this.lastName = "";
         this.email = null;
         this.password=null;

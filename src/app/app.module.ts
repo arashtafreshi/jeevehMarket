@@ -51,6 +51,7 @@ import { PanelMenuModule } from 'primeng/panelmenu';
 import { MenuModule } from 'primeng/menu';
 import { InputSwitchModule } from 'primeng/inputswitch';
 import { CarouselModule } from 'primeng/carousel';
+import {RadioButtonModule} from 'primeng/radiobutton';
 
 
 
@@ -138,6 +139,7 @@ import { ArticleHeadlineComponent } from './components/article-headline/article-
     MenuModule,
     InputSwitchModule,
     CarouselModule,
+    RadioButtonModule,
     AppRoutingModule
   ],
   providers: [AuthService, AuthGuardService],

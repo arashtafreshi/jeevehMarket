@@ -43,34 +43,38 @@
     </span>
   </div>
   <div [ngClass]="['ui-g-12']">
-    <span class="ui-float-label">
-      <p-calendar id="email-input" [(ngModel)]="user.email"></p-calendar>
-      <label for="email-input">Email</label>
-    </span>
-  </div>
+      <span class="ui-float-label">
+        <input id="email-input" type="text" [(ngModel)]="user.email" [disabled]="true" size="40" pInputText>
+        <label for="email-input">Email</label>
+      </span>
+    </div>
+  
   <div [ngClass]="['ui-g-12']">
     <span class="ui-label">
       <p-inputSwitch id="author-input" onLabel="Active" offLabel="Inactive" [(ngModel)]="user.active"></p-inputSwitch>
     </span>
   </div>
   <div [ngClass]="['ui-g-12']">
-    <span class="ui-float-label">
-      <input id="gender-input" type="text" [(ngModel)]="user.gender" size="40" pInputText>
-      <label for="gender-input">Gender</label>
+    <span class="">
+        <label for="gender-input">Gender</label>
+        <div>
+            <p-radioButton name="gender" label="Male" value="Male" [(ngModel)]="user.gender"></p-radioButton>
+            <p-radioButton name="gender" label="Female" value="Female" [(ngModel)]="user.gender"></p-radioButton>
+        </div>
     </span>
   </div>
   <div [ngClass]="['ui-g-12']">
     <span class="ui-float-label">
-      <input id="phone-input" type="tel" [(ngModel)]="user.phone" size="40" [disabled]="true" pInputText>
+      <input id="phone-input" type="tel" [(ngModel)]="user.phone" size="40" pInputText>
       <label for="phone-input">phone</label>
     </span>
   </div>
   <div [ngClass]="['ui-g-12']">
-    <span class="ui-float-label">
-      <input id="birthDate-input" type="text" [(ngModel)]="user.birthDate" size="40" [disabled]="true" pInputText>
-      <label for="birthDate-input">DOB</label>
-    </span>
-  </div>
+      <span class="ui-float-label">
+        <p-calendar id="birthDate-input" [(ngModel)]="user.birthDate"></p-calendar>
+        <label for="birthDate-input">DOB</label>
+      </span>
+    </div>
   <div [ngClass]="['ui-g-12']">
     <span class="ui-label">
 

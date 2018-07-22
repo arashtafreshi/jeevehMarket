@@ -34,6 +34,7 @@ export class LoginSignupComponent implements OnInit {
         console.log("New user created on _user table", data);
         that.db.login(that.newUser.email, that.newUser.password).then(
           () => {
+            this.newUser.role = "jeevehmarket_user";
             that.db.Save(this.newUser).then(
               res => {
                 console.log("User added to DB", res);
