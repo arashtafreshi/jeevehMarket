@@ -1,8 +1,12 @@
-<p>
-  admin-article-overview works!
-</p>
-
-<div class="container">
+<div [ngClass]="['table-overflow']">
+  <input type="text" [(ngModel)]="orderBy" placeholder="Order By">
+  <button (click)="sort(allArticles,orderBy,asc)">Sort</button>
+  <div>
+      <p-radioButton name="asc" label="ASC" value="true" [(ngModel)]="asc"></p-radioButton>
+      <p-radioButton name="asc" label="DESC" value="false" [(ngModel)]="asc"></p-radioButton>
+  </div>
+  {{asc}} | {{orderBy}}
+  
   <table [ngClass]="['table table-condensed table-stripped table-hover table-bordered']">
     <thead>
       <tr>
@@ -19,14 +23,14 @@
     </thead>
     <tbody>
       <tr *ngFor="let article of allArticles; index as i;">
-          <td>{{i+1}}</td>
+        <td>{{i+1}}</td>
         <td [ngStyle]="{'background-color': null==article.title?'silver':''}">{{article.title}}</td>
         <td [ngStyle]="{'background-color': null==article.header?'silver':''}">{{article.header}}</td>
         <td [ngStyle]="{'background-color': null==article.content?'silver':''}">{{article.content}}</td>
         <td [ngStyle]="{'background-color': null==article.dateCreated?'silver':''}">{{article.dateCreated | date:format:"shortDate"}}</td>
         <td [ngStyle]="{'background-color': null==article.publishDate?'silver':''}">{{article.publishDate | date:format:"shortDate"}}</td>
         <td [ngStyle]="{'background-color': null==article.createdBy?'silver':''}">{{article.createdBy}}</td>
-        <td [ngStyle]="{'background-color': null==article.active?'silver':''}">{{article.active}}</td>
+        <td [ngStyle]="{'background-color': (null==article.active || article.active == false)?'lightcoral':'darkseagreen'}">{{article.active?"Yes":"No"}}</td>
         <td>
           <div class="row">
             <div class="col-md-4 col-lg-4">
@@ -39,10 +43,14 @@
                 <i [ngClass]="['fa fa-trash']"></i>
               </button>
             </div>
+            <div class="col-md-4 col-lg-4">
+              <a routerLink="/article/{{article._id}}">
+                <button [ngClass]="['btn btn-default']">View</button>
+              </a>
+            </div>
           </div>
         </td>
       </tr>
     </tbody>
   </table>
 </div>
-

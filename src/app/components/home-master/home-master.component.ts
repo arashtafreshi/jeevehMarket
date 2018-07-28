@@ -24,7 +24,7 @@ export class HomeMasterComponent implements OnInit {
   htmlLink: string;
   htmlLink2: any;
   checkout: any = `
-  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script async [src]="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
   <script>(adsbygoogle = window.adsbygoogle || []).push({
     google_ad_client: "ca-pub-1028565628417803",
     enable_page_level_ads: true

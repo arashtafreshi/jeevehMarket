@@ -1,7 +1,3 @@
-<p>
-  admin-user-overview works!
-</p>
-
 
 <table [ngClass]="['table table-condensed table-stripped table-hover table-bordered']">
   <thead>
@@ -16,6 +12,7 @@
       <th>Phone</th>
       <th>Birthday</th>
       <th>Active</th>
+      <th>Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -25,10 +22,11 @@
       <td [ngStyle]="{'background-color': null==user.value.lastName?'silver':''}">{{user.value.lastName}}</td>
       <td [ngStyle]="{'background-color': null==user.value.email?'silver':''}">{{user.value.email}}</td>
       <td [ngStyle]="{'background-color': null==user.value.middleName?'silver':''}">{{user.value.middleName}}</td>
-      <td [ngStyle]="{'background-color': null==user.value.gender?'silver':''}">{{user.value.gender}}</td>
+      <td [ngStyle]="{'background-color': user.value.gender=='Male'?'lightblue':(user.value.gender=='Female'?'pink':'silver')}">{{user.value.gender=="Male"?"M":(user.value.gender=="Female"?"F":"N/A")}}</td>
       <td [ngStyle]="{'background-color': null==user.value.role?'silver':''}">{{user.value.role}}</td>
       <td [ngStyle]="{'background-color': null==user.value.phone?'silver':''}">{{user.value.phone}}</td>
       <td [ngStyle]="{'background-color': null==user.value.birthDate?'silver':''}">{{user.value.birthDate | date:format:"shortDate"}}</td>
+      <td [ngStyle]="{'background-color': user.value.active?'darkseagreen':(user.value.active==false?'lightcoral':'silver')}">{{user.value.active?"Yes":(user.value.active==false?"No":"N/A")}}</td>
       <td>
         <div class="row">
           <div class="col-md-4 col-lg-4">

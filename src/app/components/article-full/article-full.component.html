@@ -1,10 +1,12 @@
-<p>
-  article-full works!
-</p>
+
 <div [ngClass]="['container']">
   <h1>{{article.title}}</h1>
-  <div  style="max-height: 400px">
-      <img  src="/api/couch/jeevehmarket/{{article._id}}/{{attachments[0]}}" style="max-height: inherit">
+
+
+  
+
+  <div [ngClass]="['top-image-wrapper']">
+    <img [ngClass]="['top-image']" src="/api/couch/jeevehmarket/{{article._id}}/{{attachments[0]}}">
   </div>
   <!--
   <p-carousel [value]="attachments" numVisible="1">
@@ -14,17 +16,20 @@
   </p-carousel>
   -->
   <div [ngClass]="['profilepic']">
-      <img *ngIf="article.profilePicture" src="/api/couch/jeevehmarket/{{article._id}}/{{article.profilePicture}}">
-      <img *ngIf="!article.profilePicture" src="https://i.stack.imgur.com/34AD2.jpg">
+    <img *ngIf="article.profilePicture" src="/api/couch/jeevehmarket/{{article._id}}/{{article.profilePicture}}">
+    <img *ngIf="!article.profilePicture" src="https://i.stack.imgur.com/34AD2.jpg">
   </div>
 
   <div>
-    <h5>Author: {{article.author}}</h5>
-    <h5>Date: {{article.datePublished | date:'dd.MM.yyyy'}}</h5>
-    <h5>Price: {{article.price}}</h5>
+    <h5><i [ngClass]="['fa fa-user']"></i>  Author: {{article.author}}</h5>
+    <h5><i [ngClass]="['fa fa-calendar']"></i>  Date: {{article.datePublished | date:format:"shortDate"}}</h5>
+    <h5 *ngIf="article.price"><i ></i>  Price: {{article.price}}</h5>
     <hr>
     <h3>Description:</h3>
     <p>{{article.content}}</p>
   </div>
 
+  <p-lightbox [images]="images"></p-lightbox>
+
+  <p-galleria [images]="images" panelWidth="800" panelHeight="500" [showCaption]="true"></p-galleria>
 </div>

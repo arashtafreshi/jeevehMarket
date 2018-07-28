@@ -76,4 +76,15 @@ export class AdminArticleEditComponent implements OnInit {
       );
     });
   }
+
+  deleteImage(fileName:string){
+    let del = confirm("Are you sure you want to delete this file? "+fileName);
+    if(del){
+
+    }else{
+      
+    }
+  }
+
+  // end of class
 }

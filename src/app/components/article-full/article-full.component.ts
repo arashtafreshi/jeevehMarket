@@ -4,6 +4,8 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { DbService } from '../../services/db.service';
 import { dbArticle } from '../../models/dbArticle';
 
+const baseImageUri: string = "/api/couch/jeevehmarket/";
+
 @Component({
     selector: 'app-article-full',
     templateUrl: './article-full.component.html',
@@ -12,12 +14,12 @@ import { dbArticle } from '../../models/dbArticle';
 })
 export class ArticleFullComponent implements OnInit {
     article?: dbArticle = new dbArticle();
-    image: string = "/api/couch/jeevehmarket/";
-    attachments: string[]=[];
+    image: string = baseImageUri;
+    attachments: string[] = [];
 
-    constructor(private _db: DbService, private route: ActivatedRoute) { }
+    images: any[];
 
-    ngOnInit() {
+    constructor(private _db: DbService, private route: ActivatedRoute) {
         let id = this.route.snapshot.paramMap.get('id');
         this._db.GetDocumentById(id).subscribe(
             data => {
@@ -31,9 +33,22 @@ export class ArticleFullComponent implements OnInit {
                 } else {
                     this.image = "http://lorempixel.com/300/300";
                 }
+                this.images = [];
+                this.attachments.forEach(image => {
+                    this.images.push({
+                        source: baseImageUri + (this.article._id + "/" + image),
+                        alt: 'Description for Image 1',
+                        title: 'Title 1'
+                    });
+                });
             },
             error => console.log('oops', error)
         );
+     }
+
+    ngOnInit() {
+        
+        
 
 
     }

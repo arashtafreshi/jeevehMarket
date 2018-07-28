@@ -15,43 +15,9 @@ export class LoginComponent {
   doSpin: boolean = false;
 
   constructor(public authService: AuthService, public router: Router) {
-    this.setMessage();
+    
   }
 
-  setMessage() {
-    this.message = 'Logged ' + (this.authService.isLoggedIn ? 'in' : 'out');
-  }
-
-  login() {
-    this.message = 'Trying to log in ...';
-    this.doSpin = true;
-    this.authService.login().subscribe(() => {
-      this.setMessage();
-      if (this.authService.isLoggedIn) {
-        // Get the redirect URL from our auth service
-        // If no redirect has been set, use the default
-        let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/home';
-        this.doSpin = false;
-        localStorage.setItem('isLoggedIn', "true");
-        // Redirect the user
-        this.router.navigate([redirect]);
-      }
-    });
-  }
-
-  logout() {
-    this.authService.logout();
-    localStorage.removeItem('isLoggedIn');
-    this.setMessage();
-    if (!this.authService.isLoggedIn) {
-      // Get the redirect URL from our auth service
-      // If no redirect has been set, use the default
-      
-      let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/home';
-      // Redirect the user
-      this.router.navigate([redirect]);
-    }
-  }
 
   isLoggedIn(): boolean {
     this.authService.isLoggedIn = localStorage.getItem("isLoggedIn") === "true" ? true : false;
@@ -61,8 +27,7 @@ export class LoginComponent {
   }
 
   ngOnInit() {
-    this.msgs.push({ severity: 'error', summary: 'Username/Password', detail: 'The username/password is wrong. Please try again.' });
-    //this.isLoggedIn = this.authService.isLoggedIn;
+    
   }
 
 }

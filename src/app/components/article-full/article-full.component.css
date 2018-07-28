@@ -5,11 +5,27 @@
     margin-top: -100px; 
     margin-left: 20px;
     position: relative; 
-    border-radius: 25px
+    border-radius: 25px;
+    margin-bottom: 30px;
 }
 
 .profilepic img{
     width: inherit;
     height: inherit;
     border-radius: inherit
+}
+
+.top-image{
+    max-width: 100%;
+}
+
+.top-image-wrapper{
+    overflow: hidden;
+    height: 400px;
+}
+
+hr{
+    background: linear-gradient(to right, #007bff , #007bff42);
+    height: 1.5mm;
+    border-radius: 25px;
 }

@@ -14,6 +14,8 @@ export class AdminArticleOverviewComponent implements OnInit {
   allArticles:dbArticle[] = [];
   @Output() onArticleEdit: EventEmitter<dbArticle> = new EventEmitter<dbArticle>();
   articleTree:TreeNode[];
+  orderBy:string = "dateCreated";
+  asc:string = 'true';
 
   constructor(private _db:DbService) { }
 
@@ -22,6 +24,7 @@ export class AdminArticleOverviewComponent implements OnInit {
       data.rows.forEach(element => {
         this.allArticles.push(element.value)
       });
+      //this.sort(this.allArticles, "dateCreated", false);
       this.onArticleEdit.emit(new dbArticle);
     });
     
@@ -36,7 +39,23 @@ export class AdminArticleOverviewComponent implements OnInit {
     this.onArticleEdit.emit(article);
   }
 
-
+  sort(elements:any, by:string, asc:string){
+    console.log(asc+":"+by);
+    try{
+      this.allArticles.sort((a,b)=>{
+        if(a[by] > b[by]){
+          return 1*(asc==='true'?1:-1);
+        }else if(a[by] < b[by]){
+          return -1*(asc==='false'?1:-1);
+        }else{
+          return 0;
+        }
+      });
+    }catch(err){
+      console.log(err);
+    }
+    
+  }
   
 
 

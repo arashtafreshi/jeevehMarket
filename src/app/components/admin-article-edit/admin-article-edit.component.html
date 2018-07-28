@@ -1,10 +1,5 @@
-<p>
-  admin-article-edit works!
-</p>
-
-
-
-<h3 class="first">Article</h3>
+<h3 class="first">
+  Article</h3>
 
 <div class="ui-g">
   <div [ngClass]="['ui-g-12']">
@@ -110,13 +105,19 @@
     </span>
   </div>
   <div [ngClass]="['ui-g-12']">
-    <span class="ui-label">
-
-      <label for="attachments">Attachments</label>
-      <div>
-        <p>{{getAttachments()}}</p>
-      </div>
-    </span>
+    <h3>Attachments:</h3>
+    <table [ngClass]="['table table-striped table-condensed table-hover']">
+      <thead>
+        <th>File Name</th>
+        <th>Action</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let image of getAttachments()">
+          <td>{{image}}</td>
+          <td><button [ngClass]="['btn btn-danger']" (click)="deleteImage(image)">Delete</button></td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 
   <!--<div [ngClass]="['ui-g-12']">
@@ -125,10 +126,13 @@
       <label for="image-input">Image</label>
     </span>
   </div>-->
+  <h4>Upload Profile Picture:</h4>
   <div [ngClass]="['ui-g-12']">
-      <p-fileUpload customUpload="true" id="profilepic" name="profilepic" url="/api/couch/jeevehmarket/" accept="image/*" maxFileSize="5000000"
-        showUploadButton=true (uploadHandler)="myUploader($event,true)"></p-fileUpload>
-    </div>
+    <p-fileUpload customUpload="true" id="profilepic" name="profilepic" url="/api/couch/jeevehmarket/" accept="image/*" maxFileSize="5000000"
+      showUploadButton=true (uploadHandler)="myUploader($event,true)"></p-fileUpload>
+  </div>
+
+  <h4>Upload Attachments:</h4>
   <div [ngClass]="['ui-g-12']">
     <p-fileUpload customUpload="true" id="file" name="file" url="/api/couch/jeevehmarket/" accept="image/*" maxFileSize="5000000"
       showUploadButton=true (uploadHandler)="myUploader($event,false)"></p-fileUpload>
