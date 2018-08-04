@@ -1,5 +1,15 @@
 .footer-wrapper{
     min-height: 8cm;
-    background-color: silver;
+    background-color: black;
     margin-top: 1cm;
+    position: relative;
+}
+
+.footer-content{
+    text-align: center;
+    bottom: 0;
+    position: absolute;
+    left: 45%;
+    padding: 10px;
+    color: white;
 }

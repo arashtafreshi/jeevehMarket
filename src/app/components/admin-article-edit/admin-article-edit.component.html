@@ -52,8 +52,20 @@
   </div>
   <div [ngClass]="['ui-g-12']">
     <span class="ui-label">
-      <p-inputSwitch id="author-input" onLabel="Active" offLabel="Inactive" [(ngModel)]="article.active"></p-inputSwitch>
+      <h5 for="active-input">Is Active:</h5>
+      <p-inputSwitch id="active-input" onLabel="Active" offLabel="Inactive" [(ngModel)]="article.active"></p-inputSwitch>
     </span>
+  </div>
+  <div [ngClass]="['ui-g-12']">
+    <span class="ui-label">
+      <h5 for="showProfilePicture-input">Show Profile Picture:</h5>
+      <p-inputSwitch id="showProfilePicture-input" onLabel="Show" offLabel="Hide" [(ngModel)]="article.showProfilePicture"></p-inputSwitch>
+    </span>
+  </div>
+  <h4>Upload Profile Picture:</h4> Current: {{article.profilePicture}}
+  <div [ngClass]="['ui-g-12']">
+    <p-fileUpload customUpload="true" id="profilepic" name="profilepic" url="/api/couch/jeevehmarket/" accept="image/*" maxFileSize="5000000"
+      showUploadButton=true (uploadHandler)="myUploader($event,true)"></p-fileUpload>
   </div>
   <div [ngClass]="['ui-g-12']">
     <span class="ui-float-label">
@@ -100,8 +112,8 @@
 
   <div [ngClass]="['ui-g-12']">
     <span class="ui-float-label">
-      <p-calendar id="date-input" [(ngModel)]="article.datePublished"></p-calendar>
-      <label for="date-input">Date Published</label>
+      <p-calendar id="Published-input" [(ngModel)]="article.datePublished"></p-calendar>
+      <label for="Published-input">Date Published</label>
     </span>
   </div>
   <div [ngClass]="['ui-g-12']">
@@ -114,7 +126,9 @@
       <tbody>
         <tr *ngFor="let image of getAttachments()">
           <td>{{image}}</td>
-          <td><button [ngClass]="['btn btn-danger']" (click)="deleteImage(image)">Delete</button></td>
+          <td>
+            <button [ngClass]="['btn btn-danger']" (click)="deleteImage(image)">Delete</button>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -126,11 +140,7 @@
       <label for="image-input">Image</label>
     </span>
   </div>-->
-  <h4>Upload Profile Picture:</h4>
-  <div [ngClass]="['ui-g-12']">
-    <p-fileUpload customUpload="true" id="profilepic" name="profilepic" url="/api/couch/jeevehmarket/" accept="image/*" maxFileSize="5000000"
-      showUploadButton=true (uploadHandler)="myUploader($event,true)"></p-fileUpload>
-  </div>
+
 
   <h4>Upload Attachments:</h4>
   <div [ngClass]="['ui-g-12']">

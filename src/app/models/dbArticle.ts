@@ -20,6 +20,7 @@ export class dbArticle {
     _attachments:any;
     price:number;
     profilePicture:string;
+    showProfilePicture:boolean;
 
     constructor() {
         this._id = null;
@@ -40,5 +41,6 @@ export class dbArticle {
         this.datePublished = null;
         this.price = null;
         this.profilePicture = null;
+        this.showProfilePicture = true;
     }
 }

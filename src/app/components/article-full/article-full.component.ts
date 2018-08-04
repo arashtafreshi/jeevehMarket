@@ -16,6 +16,7 @@ export class ArticleFullComponent implements OnInit {
     article?: dbArticle = new dbArticle();
     image: string = baseImageUri;
     attachments: string[] = [];
+    isNotActiveMsg:string = "This article is not active!";
 
     images: any[];
 
