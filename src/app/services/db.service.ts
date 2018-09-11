@@ -20,17 +20,13 @@ export class DbService {
     return this.httpClient.get<dbArticle>("/api/couch/jeevehmarket/" + docId);
   }
 
-  GetUserById(docId: string): Observable<User> {
-    return this.httpClient.get<User>("/api/couch/jeevehmarket/" + docId);
-  }
+  
 
   GetAllArticles(): Observable<any> {
     return this.httpClient.get(dbUrl + "_design/article/_view/all");
   }
 
-  GetAllUsers(): Observable<any> {
-    return this.httpClient.get(dbUrl + "_design/user/_view/all");
-  }
+  
 
   async Save(newDocument: any): Promise<any> {
     let url = dbUrl;
@@ -96,61 +92,20 @@ export class DbService {
 
   }
 
-  verifyLogin(email: string, password: string): Promise<any> {
-    let httpParams = new HttpParams()
-      .append("group", "true")
-      .append("key", email);
-
-    return this.httpClient.get(dbUrl + "_design/user/_view/login?" + httpParams).toPromise();
-  }
+  
 
   GetLatestRevById(id: string): Promise<any> {
     return this.httpClient.get(dbUrl + id).toPromise();
   }
 
-  newAdmin(username: string, password: string): Promise<any> {
-    let headers = new HttpHeaders({
-      "content-type": "application/json",
-      "Authorization": "Basic " + btoa("admin:1CouchdbeBkhod")
-    });
-    let data = {
-      "admins": { 
-        "names": [],
-         "roles": [] 
-      }, 
-      "members": {
-         "names": ["jan"], 
-         "roles": [] 
-        }
-    }
-    return this.httpClient.put(dbUrl + "jeevehmarket/_security", data, { headers: headers }).toPromise();
-  }
+  
 
 
   //curl -X PUT http://admin:1CouchdbeBkhod@localhost:5984/_users/org.couchdb.user:a@b.com  -H "Accept: application/json"  -H "Content-Type: application/json"  -d '{"name": "a@b.com", "password": "1234", "roles": ["jeevehmarket_user"], "type": "user"}'
 
-  createNewUser(name, password): Promise<any>{
-    let headers = new HttpHeaders({
-      "content-type": "application/json",
-      "accept":"application/json",
-      "Authorization": "Basic " + btoa("admin:1CouchdbeBkhod")
-    });
-    let data = {"name": name, "password": password, "roles": ["jeevehmarket_user"], "type": "user"};
-
-    return this.httpClient.put("/api/couch/_users/org.couchdb.user:"+ name, data,{ headers: headers }).toPromise();
-  }
+  
 
   // see: http://docs.couchdb.org/en/2.0.0/api/server/authn.html#api-auth-cookie
-  login(username:string, password:string):Promise<any>{
-    let headers = new HttpHeaders({
-      "content-type": "application/json"//,
-      //"Authorization": "Basic " + btoa("admin:1CouchdbeBkhod")
-    });
-    let data = {
-      name:username,
-      password:password
-    }
-    return this.httpClient.post("/api/couch/_session", data, {headers:headers}).toPromise();
-  }
+  
 
 }

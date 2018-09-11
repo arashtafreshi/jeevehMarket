@@ -1,3 +1,10 @@
 span.ui-float-label{
     margin-bottom: 25px;
 }
+
+.left-article-info{
+    position: fixed;
+    border-style: groove;
+    width: inherit;
+    overflow: hidden;
+}

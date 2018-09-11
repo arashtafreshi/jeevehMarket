@@ -1,104 +1,110 @@
-
 <h3 class="first">User</h3>
 
 <div class="ui-g">
-  <div [ngClass]="['ui-g-12']">
-    <span class="ui-float-label">
-      <input id="title-input" type="text" [(ngModel)]="user._id" size="40" [disabled]="true" pInputText>
-      <label for="title-input">ID</label>
-    </span>
+  <div [ngClass]="['ui-lg-4 ui-md-12 ui-sm-12']">
+    <div [ngClass]="['']">
+      <div [ngClass]="['ui-g-12']">
+        <span class="ui-label">
+          <p-inputSwitch id="active-input" onLabel="Active" offLabel="Inactive" [(ngModel)]="user.active"></p-inputSwitch>
+        </span>
+      </div>
+      <div [ngClass]="['ui-g-12']">
+        <strong>ID:</strong> {{user._id}}
+      </div>
+      <div [ngClass]="['ui-g-12']">
+        <strong>Rev.:</strong> {{user._rev}}
+      </div>
+      <div [ngClass]="['ui-g-12']">
+        <strong>Type:</strong> {{user.type}}
+      </div>
+      <div [ngClass]="['ui-g-12']">
+        <strong>Date Created:</strong> {{user.dateCreated | date:format:"dd.mm.yyyy"}}
+      </div>
+      <div>
+        <p-button label="Save Changes" (click)="updateUser()" styleClass="ui-button-success"></p-button>
+        <p-progressSpinner *ngIf="isUpdating"></p-progressSpinner>
+      </div>
+    </div>
   </div>
-  <div [ngClass]="['ui-g-12']">
-    <span class="ui-float-label">
-      <input id="title-input" type="text" [(ngModel)]="user._rev" size="40" [disabled]="true" pInputText>
-      <label for="title-input">Rev.</label>
-    </span>
-  </div>
-  <div [ngClass]="['ui-g-12']">
-    <span class="ui-float-label">
-      <input id="title-input" type="text" [(ngModel)]="user.type" size="40" [disabled]="true" pInputText>
-      <label for="title-input">Type</label>
-    </span>
-  </div>
-  <div [ngClass]="['ui-g-12']">
-    <span class="ui-float-label">
-      <input id="firstName-input" type="text" [(ngModel)]="user.firstName" size="40" pInputText>
-      <label for="firstName-input">First Name</label>
-    </span>
-  </div>
-  <div [ngClass]="['ui-g-12']">
-    <span class="ui-float-label">
-      <input id="middleName-input" type="text" [(ngModel)]="user.middleName" size="40" pInputText>
-      <label for="middleName-input">Middle Name</label>
-    </span>
-  </div>
-  <div [ngClass]="['ui-g-12']">
-    <span class="ui-float-label">
-      <input id="lastName-input" type="text" [(ngModel)]="user.lastName" size="40" pInputText>
-      <label for="lastName-input">Last Name</label>
-    </span>
-  </div>
-  <div [ngClass]="['ui-g-12']">
+  <div [ngClass]="['ui-lg-8 ui-md-12 ui-sm-12']">
+    <div [ngClass]="['ui-g-12']">
+      <span class="ui-float-label">
+        <input id="firstName-input" type="text" [(ngModel)]="user.firstName" size="40" pInputText>
+        <label for="firstName-input">First Name</label>
+      </span>
+    </div>
+    <div [ngClass]="['ui-g-12']">
+      <span class="ui-float-label">
+        <input id="middleName-input" type="text" [(ngModel)]="user.middleName" size="40" pInputText>
+        <label for="middleName-input">Middle Name</label>
+      </span>
+    </div>
+    <div [ngClass]="['ui-g-12']">
+      <span class="ui-float-label">
+        <input id="lastName-input" type="text" [(ngModel)]="user.lastName" size="40" pInputText>
+        <label for="lastName-input">Last Name</label>
+      </span>
+    </div>
+    <div [ngClass]="['ui-g-12']">
       <span class="ui-float-label">
         <input id="email-input" type="text" [(ngModel)]="user.email" [disabled]="true" size="40" pInputText>
         <label for="email-input">Email</label>
       </span>
     </div>
-  
-  <div [ngClass]="['ui-g-12']">
-    <span class="ui-label">
-      <p-inputSwitch id="author-input" onLabel="Active" offLabel="Inactive" [(ngModel)]="user.active"></p-inputSwitch>
-    </span>
-  </div>
-  <div [ngClass]="['ui-g-12']">
-    <span class="">
+    <div [ngClass]="['ui-g-12']">
+      <span class="">
         <label for="gender-input">Gender</label>
         <div>
-            <p-radioButton name="gender" label="Male" value="Male" [(ngModel)]="user.gender"></p-radioButton>
-            <p-radioButton name="gender" label="Female" value="Female" [(ngModel)]="user.gender"></p-radioButton>
+          <p-radioButton name="gender" label="Male" value="Male" [(ngModel)]="user.gender"></p-radioButton>
+          <p-radioButton name="gender" label="Female" value="Female" [(ngModel)]="user.gender"></p-radioButton>
         </div>
-    </span>
-  </div>
-  <div [ngClass]="['ui-g-12']">
-    <span class="ui-float-label">
-      <input id="phone-input" type="tel" [(ngModel)]="user.phone" size="40" pInputText>
-      <label for="phone-input">phone</label>
-    </span>
-  </div>
-  <div [ngClass]="['ui-g-12']">
-      <span class="ui-float-label">
-        <p-calendar id="birthDate-input" [(ngModel)]="user.birthDate"></p-calendar>
-        <label for="birthDate-input">DOB</label>
       </span>
     </div>
-  <div [ngClass]="['ui-g-12']">
-    <span class="ui-label">
+    <div [ngClass]="['ui-g-12']">
+      <span class="ui-float-label">
+        <input id="phone-input" type="tel" [(ngModel)]="user.phone" size="40" pInputText>
+        <label for="phone-input">phone</label>
+      </span>
+    </div>
+    <div [ngClass]="['ui-g-12']">
+      <span class="ui-float-label">
+        <p-calendar id="birthDate-input" [(ngModel)]="user.birthDate"></p-calendar>
+        <label for="birthDate-input">Date of Birth</label>
+      </span>
+    </div>
+    <div [ngClass]="['ui-g-12']">
+      <span class="ui-label">
 
-      <label for="attachments">Attachments</label>
-      <div>
-        <p>{{getAttachments()}}</p>
-      </div>
-    </span>
-  </div>
+        <label for="attachments">Attachments</label>
+        <div>
+          <p>{{getAttachments()}}</p>
+        </div>
+      </span>
+    </div>
 
-  <!--<div [ngClass]="['ui-g-12']">
-    <span class="ui-float-label">
-      <input id="image-input" type="text" [(ngModel)]="user.image" size="40" pInputText>
-      <label for="image-input">Image</label>
-    </span>
-  </div>-->
-  <div [ngClass]="['ui-g-12']">
+    <div [ngClass]="['ui-g-12']">
+      <h5>Upload Profile Picture:</h5>
       <p-fileUpload customUpload="true" id="profilepic" name="profilepic" url="/api/couch/jeevehmarket/" accept="image/*" maxFileSize="5000000"
         showUploadButton=true (uploadHandler)="myUploader($event,true)"></p-fileUpload>
     </div>
-  <div [ngClass]="['ui-g-12']">
-    <p-fileUpload customUpload="true" id="file" name="file" url="/api/couch/jeevehmarket/" accept="image/*" maxFileSize="5000000"
-      showUploadButton=true (uploadHandler)="myUploader($event,false)"></p-fileUpload>
+    <div [ngClass]="['ui-g-12']">
+      <h5>Upload Profile Picture:</h5>
+      <p-fileUpload customUpload="true" id="file" name="file" url="/api/couch/jeevehmarket/" accept="image/*" maxFileSize="5000000"
+        showUploadButton=true (uploadHandler)="myUploader($event,false)"></p-fileUpload>
+    </div>
   </div>
+
+
+
+
+
+
+
+
+
   <!--<div [ngClass]="['ui-g-12']">
     <p-editor [(ngModel)]="user.content" [style]="{'height':'520px'}"></p-editor>
   </div>
 -->
-  <p-button label="Save Changes" (click)="updateUser()"></p-button>
-  <p-progressSpinner *ngIf="isUpdating"></p-progressSpinner>
+
 </div>

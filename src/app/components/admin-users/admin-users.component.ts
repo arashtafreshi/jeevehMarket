@@ -4,23 +4,24 @@ import { FormsModule } from '@angular/forms';
 
 import { User } from '../../models/User';
 import { DbService } from '../../services/db.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-admin-users',
   templateUrl: './admin-users.component.html',
   styleUrls: ['./admin-users.component.css'],
-  providers: [DbService]
+  providers: [DbService, UserService]
 })
 export class AdminUsersComponent implements OnInit {
 
   user: User;
   allUsers: User[];
 
-  constructor(private _db: DbService) { }
+  constructor(private _db: DbService, private _userService:UserService) { }
 
   ngOnInit() {
     this.user = new User();
-    this._db.GetAllUsers().subscribe((data)=>this.allUsers=data.rows);
+    this._userService.GetAllUsers().subscribe((data)=>this.allUsers=data.rows);
   }
 
   addUser() {
@@ -35,7 +36,7 @@ export class AdminUsersComponent implements OnInit {
   }
 
   getAllUsers() {
-    this._db.GetAllUsers().subscribe(resp =>{
+    this._userService.GetAllUsers().subscribe(resp =>{
       this.allUsers = resp.rows;
     });
   }

@@ -1,19 +1,20 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { User } from '../../models/User';
 import { DbService } from '../../services/db.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-admin-user-edit',
   templateUrl: './admin-user-edit.component.html',
   styleUrls: ['./admin-user-edit.component.css'],
-  providers:[DbService]
+  providers: [DbService, UserService]
 })
 export class AdminUserEditComponent implements OnInit {
   @Input() user: User;
   isUpdating: boolean = false;
   attachments: string[] = [];
 
-  constructor(private db: DbService) { }
+  constructor(private db: DbService, private _userService: UserService) { }
 
   ngOnInit() {
   }
@@ -24,11 +25,9 @@ export class AdminUserEditComponent implements OnInit {
       for (let key in this.user._attachments) {
         if (this.user._attachments[key].length) {
           keys.push(key);
-          console.log(keys);
+          //console.log(keys);
         }
-
       }
-
     }
     return keys;
   }
@@ -54,7 +53,7 @@ export class AdminUserEditComponent implements OnInit {
       this.db.Upload(file, this.user._id).then(
         data => {
           console.log(data);
-          this.db.GetUserById(that.user._id).subscribe(function(data){
+          this._userService.GetUserById(that.user._id).subscribe(function (data) {
             that.user = data;
             if (isProfilePic) {
               that.user.profilePicture = file.name;

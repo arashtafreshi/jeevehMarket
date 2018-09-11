@@ -6,12 +6,13 @@ import { User } from '../../models/User';
 import {DbService} from '../../services/db.service';
 
 import { ArticleModel } from '../article-thumbnail/article-model';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-admin-main',
   templateUrl: './admin-main.component.html',
   styleUrls: ['./admin-main.component.css'],
-  providers:[DbService]
+  providers:[DbService,UserService]
 })
 export class AdminMainComponent implements OnInit {
   @Input() article: ArticleModel;
@@ -20,7 +21,7 @@ export class AdminMainComponent implements OnInit {
 
 
 
-  constructor(private _db:DbService) {}
+  constructor(private _db:DbService, private _userService:UserService) {}
 
   ngOnInit() {
     this.article = new ArticleModel();
@@ -44,7 +45,7 @@ export class AdminMainComponent implements OnInit {
   }
 
   getAllUsers(){
-    this._db.GetAllUsers().subscribe((resp:User[])=>this.allUsers = resp);
+    this._userService.GetAllUsers().subscribe((resp:User[])=>this.allUsers = resp);
   }
 
   deleteUser(usr:User){

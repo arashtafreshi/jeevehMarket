@@ -21,6 +21,7 @@ export class dbArticle {
     price:number;
     profilePicture:string;
     showProfilePicture:boolean;
+    
 
     constructor() {
         this._id = null;

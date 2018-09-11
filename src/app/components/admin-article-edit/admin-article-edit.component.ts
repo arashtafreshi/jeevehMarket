@@ -25,7 +25,6 @@ export class AdminArticleEditComponent implements OnInit {
       for (let key in this.article._attachments) {
         if (this.article._attachments[key].length) {
           keys.push(key);
-          console.log(keys);
         }
 
       }
